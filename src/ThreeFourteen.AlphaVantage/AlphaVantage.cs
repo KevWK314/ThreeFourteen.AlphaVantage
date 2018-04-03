@@ -1,0 +1,39 @@
+﻿using System;
+using ThreeFourteen.AlphaVantage.Builder;
+using ThreeFourteen.AlphaVantage.Configuration;
+using ThreeFourteen.AlphaVantage.Service;
+
+namespace ThreeFourteen.AlphaVantage
+{
+    public static class AlphaVantage
+    {
+        private static AlphaVantageConfig _config;
+        private static Lazy<AlphaVantageService> _service;
+
+        static AlphaVantage()
+        {
+            _config = new AlphaVantageConfig();
+            _service = new Lazy<AlphaVantageService>(() => new AlphaVantageService(_config));
+        }
+
+        public static CustomBuilder Custom(string symbol)
+        {
+            return new CustomBuilder(_service.Value, symbol);
+        }
+
+        public static TimeSeriesIntraDayBuilder TimeSeriesIntraDay(string symbol)
+        {
+            return new TimeSeriesIntraDayBuilder(_service.Value, symbol);
+        }
+
+        public static ExponentialMovingAverageBuilder ExponentialMovingAverage(string symbol)
+        {
+            return new ExponentialMovingAverageBuilder(_service.Value, symbol);
+        }
+
+        public static void Configure(Action<AlphaVantageConfig> configureAction)
+        {
+            configureAction?.Invoke(_config);
+        }
+    }
+}
