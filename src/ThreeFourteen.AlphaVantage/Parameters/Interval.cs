@@ -18,7 +18,7 @@
 
         public static readonly Interval Monthly = new Interval("monthly");
 
-        public static Interval[] OneToSixtyMinutes
+        internal static Interval[] OneToSixtyMinutes
         {
             get
             {
@@ -33,7 +33,7 @@
             }
         }
 
-        public static Interval[] All
+        internal static Interval[] All
         {
             get
             {

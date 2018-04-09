@@ -20,11 +20,9 @@ namespace ThreeFourteen.AlphaVantage.Service
 
         public Task<string> GetRawDataAsync(IDictionary<string, string> parameters)
         {
-            using (var client = new HttpClient { Timeout = _config.RequestTimeout })
-            {
-                var url = BuildUrl(parameters);
-                return client.GetStringAsync(url);
-            }
+            var client = new HttpClient { Timeout = _config.RequestTimeout };
+            var url = BuildUrl(parameters);
+            return client.GetStringAsync(url);
         }
 
         private string BuildUrl(IDictionary<string, string> parameters)

@@ -10,6 +10,10 @@ namespace ThreeFourteen.AlphaVantage.Builder
         {
         }
 
+        protected override string[] RequiredFields => throw new System.NotImplementedException();
+
+        protected override Function Function => throw new System.NotImplementedException();
+
         public Interval[] ValidIntervals()
         {
             return Interval.All;

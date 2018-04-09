@@ -1,4 +1,5 @@
-﻿using ThreeFourteen.AlphaVantage.Service;
+﻿using ThreeFourteen.AlphaVantage.Parameters;
+using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builder
 {
@@ -8,6 +9,10 @@ namespace ThreeFourteen.AlphaVantage.Builder
             : base(service, symbol)
         {
         }
+
+        protected override string[] RequiredFields => new string[] { ParameterFields.Function };
+
+        protected override Function Function => null;
 
         public CustomBuilder Set(string key, string value)
         {
