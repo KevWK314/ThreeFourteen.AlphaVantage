@@ -8,21 +8,28 @@ namespace ThreeFourteen.AlphaVantage.Runner
     {
         static void Main(string[] args)
         {
+            var key = Environment.GetEnvironmentVariable("AlphaVantageApiKey", EnvironmentVariableTarget.User);
+
             //var data = AlphaVantage.Custom("MSFT")
             //    .Set("function", "TIME_SERIES_INTRADAY")
             //    .Set("interval", "60min")
             //    .Set("outputsize", "compact")                
-            //    .Set("apikey", "Y0ANDH6TU4GGCJ3L")
+            //    .Set("apikey", "")
             //    .GetRawDataAsync().Result;
 
             //Console.WriteLine(data);
 
-            AlphaVantage.Configure(x => x.ApiKey = "Y0ANDH6TU4GGCJ3L");
+
+            AlphaVantage.Configure(x => x.ApiKey = key);
 
             var timeseries = AlphaVantage.TimeSeriesIntraDay("MSFT")
                 .SetInterval(Interval.FiveMinutes)
                 .SetOutputSize(OutputSize.Compact)
                 .GetRawDataAsync().Result;
+
+            Console.WriteLine(timeseries);
+
+            
 
             Console.ReadKey();
         }
