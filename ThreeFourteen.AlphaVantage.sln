@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreeFourteen.AlphaVantage"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreeFourteen.AlphaVantage.Runner", "src\ThreeFourteen.AlphaVantage.Runner\ThreeFourteen.AlphaVantage.Runner.csproj", "{97237793-870C-4DB0-A1F5-D6421DA552FC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreeFourteen.AlphaVantage.Test", "test\ThreeFourteen.AlphaVantage.Test\ThreeFourteen.AlphaVantage.Test.csproj", "{3A0038CA-DC29-4FD5-A079-092016F8CAC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{97237793-870C-4DB0-A1F5-D6421DA552FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97237793-870C-4DB0-A1F5-D6421DA552FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97237793-870C-4DB0-A1F5-D6421DA552FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A0038CA-DC29-4FD5-A079-092016F8CAC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A0038CA-DC29-4FD5-A079-092016F8CAC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A0038CA-DC29-4FD5-A079-092016F8CAC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A0038CA-DC29-4FD5-A079-092016F8CAC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

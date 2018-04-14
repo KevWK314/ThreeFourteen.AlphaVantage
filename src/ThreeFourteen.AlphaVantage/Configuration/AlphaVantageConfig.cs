@@ -1,4 +1,5 @@
 ﻿using System;
+using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Configuration
 {
@@ -16,5 +17,7 @@ namespace ThreeFourteen.AlphaVantage.Configuration
         public string ApiKey { get; set; }
 
         public TimeSpan RequestTimeout { get; set; }
+
+        public IAlphaVantageService Service { get; set; }
     }
 }

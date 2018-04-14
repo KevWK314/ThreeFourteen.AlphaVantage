@@ -27,9 +27,7 @@ namespace ThreeFourteen.AlphaVantage.Runner
                 .SetOutputSize(OutputSize.Compact)
                 .GetRawDataAsync().Result;
 
-            Console.WriteLine(timeseries);
-
-            
+            Console.WriteLine(timeseries);        
 
             Console.ReadKey();
         }

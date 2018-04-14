@@ -8,12 +8,12 @@ namespace ThreeFourteen.AlphaVantage
     public static class AlphaVantage
     {
         private static AlphaVantageConfig _config;
-        private static Lazy<AlphaVantageService> _service;
+        private static Lazy<IAlphaVantageService> _service;
 
         static AlphaVantage()
         {
             _config = new AlphaVantageConfig();
-            _service = new Lazy<AlphaVantageService>(() => new AlphaVantageService(_config));
+            _service = new Lazy<IAlphaVantageService>(() => _config.Service ?? new AlphaVantageService(_config));
         }
 
         public static CustomBuilder Custom(string symbol)
