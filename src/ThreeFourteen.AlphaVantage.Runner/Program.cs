@@ -1,6 +1,7 @@
 ﻿using System;
 using ThreeFourteen.AlphaVantage.Builder;
 using ThreeFourteen.AlphaVantage.Parameters;
+using ThreeFourteen.AlphaVantage.Response;
 
 namespace ThreeFourteen.AlphaVantage.Runner
 {

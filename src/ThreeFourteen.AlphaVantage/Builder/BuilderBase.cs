@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using ThreeFourteen.AlphaVantage.Parameters;
+using ThreeFourteen.AlphaVantage.Response;
 using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builder
@@ -47,9 +50,45 @@ namespace ThreeFourteen.AlphaVantage.Builder
             return _service.GetRawDataAsync(_fields);
         }
 
-        public IEnumerable<T> GetDataAsync<T>()
+        protected virtual async Task<Result<T>> GetDataAsync<T>(Func<JToken, IEnumerable<T>> parseData)
         {
-            return Enumerable.Empty<T>();
+            var res = await GetRawDataAsync();
+            JToken node = JToken.Parse(res);
+
+            var errorNode = (node as JObject)?.Properties()?.FirstOrDefault(x => x.Name == "Error Message");
+            if (errorNode != null)
+            {
+                throw new InvalidOperationException(errorNode.Value.Value<string>());
+            }
+
+            var metadataNode = node.Root["Meta Data"];
+            if (metadataNode == null)
+            {
+                throw new InvalidOperationException("Result does not seem to be valid (missing Meta Data)");
+            }
+            var metadata = ParseMetaData(metadataNode);
+
+            var dataNode = node.Root.Skip(1).FirstOrDefault();
+            if (dataNode == null)
+            {
+                throw new InvalidOperationException("Result does not seem to be valid (missing Data)");
+            }
+            var data = parseData(dataNode).ToArray();
+
+            return new Result<T>(metadata, data);
+        }
+
+        private Metadata ParseMetaData(JToken token)
+        {
+            var data = new Dictionary<string, string>();
+            foreach (var metaData in token.Children<JProperty>())
+            {
+                var key = metaData.Name.Substring(3);
+                var val = metaData.Value.Value<string>();
+                data.Add(key, val);
+            }
+
+            return new Metadata(data);
         }
     }
 }
