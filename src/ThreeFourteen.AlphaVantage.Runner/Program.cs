@@ -14,7 +14,7 @@ namespace ThreeFourteen.AlphaVantage.Runner
             //var data = AlphaVantage.Custom("MSFT")
             //    .Set("function", "TIME_SERIES_INTRADAY")
             //    .Set("interval", "60min")
-            //    .Set("outputsize", "compact")                
+            //    .Set("outputsize", "compact")
             //    .Set("apikey", "")
             //    .GetRawDataAsync().Result;
 

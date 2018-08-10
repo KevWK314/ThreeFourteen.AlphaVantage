@@ -44,7 +44,7 @@ namespace ThreeFourteen.AlphaVantage.Builder
             var series = new List<TimeSeriesIntraDay>();
             foreach (JProperty day in properties.First.Children())
             {
-                var date = DateTime.ParseExact(day.Name, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                var date = Formats.ParseDate(day.Name);
                 var data = new TimeSeriesIntraDay { Timestamp = date };
                 data.Open = day.First.Value<double>("1. open");
                 data.High = day.First.Value<double>("2. high");

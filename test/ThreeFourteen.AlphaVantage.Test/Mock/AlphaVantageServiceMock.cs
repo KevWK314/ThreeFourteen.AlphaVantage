@@ -11,6 +11,8 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
 {
     public class AlphaVantageServiceMock : IAlphaVantageService
     {
+        public IDictionary<string, string> LatestParameters { get; private set; }
+
         private readonly Dictionary<string, string> _fileLookup = new Dictionary<string, string>
         {
             { "TIME_SERIES_INTRADAY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesIntraDay.json" }
@@ -18,6 +20,8 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
 
         public Task<string> GetRawDataAsync(IDictionary<string, string> parameters)
         {
+            LatestParameters = parameters;
+
             return LoadExampleData(_fileLookup[parameters[ParameterFields.Function]]);
         }
 
