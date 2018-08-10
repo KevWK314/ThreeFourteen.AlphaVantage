@@ -16,10 +16,10 @@ namespace ThreeFourteen.AlphaVantage
             _service = new Lazy<IAlphaVantageService>(() => _config.Service ?? new AlphaVantageService(_config));
         }
 
-        //public static CustomBuilder Custom(string symbol)
-        //{
-        //    return new CustomBuilder(_service.Value, symbol);
-        //}
+        public static CustomBuilder Custom(string symbol)
+        {
+            return new CustomBuilder(_service.Value, symbol);
+        }
 
         public static TimeSeriesIntraDayBuilder TimeSeriesIntraDay(string symbol)
         {

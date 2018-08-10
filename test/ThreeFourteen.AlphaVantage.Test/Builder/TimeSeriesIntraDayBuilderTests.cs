@@ -9,7 +9,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builder
     public class TimeSeriesIntraDayBuilderTests : BuilderTestsBase
     {
         [Fact]
-        public void Test()
+        public void Get_ShouldReturnValidData()
         {
             var timeseries = AlphaVantage.TimeSeriesIntraDay("MSFT")
                 .SetInterval(Interval.FiveMinutes)

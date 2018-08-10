@@ -4,12 +4,13 @@ namespace ThreeFourteen.AlphaVantage.Test.Builder
 {
     public abstract class BuilderTestsBase
     {
-        public BuilderTestsBase()
+        static BuilderTestsBase()
         {
             ServiceMock = new AlphaVantageServiceMock();
             AlphaVantage.Configure(x => x.Service = ServiceMock);
+
         }
 
-        protected AlphaVantageServiceMock ServiceMock { get; }
+        protected static AlphaVantageServiceMock ServiceMock { get; }
     }
 }
