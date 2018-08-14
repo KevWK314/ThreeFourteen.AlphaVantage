@@ -5,11 +5,12 @@ namespace ThreeFourteen.AlphaVantage
 {
     public static class Formats
     {
-        public const string TimestampFormat = "yyyy-MM-dd HH:mm:ss";
+        public const string DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+        public const string DateFormat = "yyyy-MM-dd";
 
-        public static DateTime ParseDate(string date)
+        public static DateTime ParseDateTime(string date)
         {
-            return DateTime.ParseExact(date, TimestampFormat, CultureInfo.InvariantCulture);
+            return DateTime.ParseExact(date, new[] { DateFormat, DateTimeFormat }, CultureInfo.InvariantCulture, DateTimeStyles.None);
         }
     }
 }

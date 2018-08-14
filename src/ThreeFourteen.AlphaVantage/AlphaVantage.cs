@@ -26,10 +26,10 @@ namespace ThreeFourteen.AlphaVantage
             return new TimeSeriesIntraDayBuilder(_service.Value, symbol);
         }
 
-        //public static ExponentialMovingAverageBuilder ExponentialMovingAverage(string symbol)
-        //{
-        //    return new ExponentialMovingAverageBuilder(_service.Value, symbol);
-        //}
+        public static TimeSeriesWeeklyBuilder TimeSeriesWeekly(string symbol)
+        {
+            return new TimeSeriesWeeklyBuilder(_service.Value, symbol);
+        }
 
         public static void Configure(Action<AlphaVantageConfig> configureAction)
         {

@@ -2,7 +2,7 @@
 
 namespace ThreeFourteen.AlphaVantage.Response
 {
-    public class TimeSeriesIntraDay
+    public class TimeSeriesEntry
     {
         public DateTime Timestamp { get; internal set; }
 

@@ -14,6 +14,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
         private static readonly Dictionary<string, string> FileLookup = new Dictionary<string, string>
         {
             { "TIME_SERIES_INTRADAY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesIntraDay.json" },
+            { "TIME_SERIES_WEEKLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesWeekly.json" },
             { "ERROR", "ThreeFourteen.AlphaVantage.Test.ExampleData.Error.json" }
         };
 
@@ -28,7 +29,6 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
 
         private async Task<string> LoadExampleData(string fileName)
         {
-
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName))
             {
                 using (var streamReader = new StreamReader(stream))

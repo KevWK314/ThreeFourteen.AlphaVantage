@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="ExampleData\Error.json" />
     <None Remove="ExampleData\TimeSeriesIntraDay.json" />
+    <None Remove="ExampleData\TimeSeriesWeekly.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +23,7 @@
   <ItemGroup>
     <EmbeddedResource Include="ExampleData\Error.json" />
     <EmbeddedResource Include="ExampleData\TimeSeriesIntraDay.json" />
+    <EmbeddedResource Include="ExampleData\TimeSeriesWeekly.json" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,21 +18,6 @@
 
         public static readonly Interval Monthly = new Interval("monthly");
 
-        internal static Interval[] OneToSixtyMinutes
-        {
-            get
-            {
-                return new[]
-                {
-                    OneMinute,
-                    FiveMinutes,
-                    FifteenMinutes,
-                    ThirtyMinutes,
-                    SixtyMinutes
-                };
-            }
-        }
-
         internal static Interval[] All
         {
             get
