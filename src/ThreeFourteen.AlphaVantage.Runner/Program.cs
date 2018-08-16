@@ -1,7 +1,6 @@
 ﻿using System;
 using ThreeFourteen.AlphaVantage.Builder;
 using ThreeFourteen.AlphaVantage.Parameters;
-using ThreeFourteen.AlphaVantage.Response;
 
 namespace ThreeFourteen.AlphaVantage.Runner
 {
@@ -10,6 +9,7 @@ namespace ThreeFourteen.AlphaVantage.Runner
         static void Main(string[] args)
         {
             var key = Environment.GetEnvironmentVariable("AlphaVantageApiKey", EnvironmentVariableTarget.User);
+            var alphaVantage = new AlphaVantage();
 
             //var data = AlphaVantage.Custom("MSFT")
             //    .Set("function", "TIME_SERIES_INTRADAY")
@@ -21,9 +21,9 @@ namespace ThreeFourteen.AlphaVantage.Runner
             //Console.WriteLine(data);
 
 
-            AlphaVantage.Configure(x => x.ApiKey = key);
+            alphaVantage.Configure(x => x.ApiKey = key);
 
-            var timeseries = AlphaVantage.TimeSeriesIntraDay("MSFT")
+            var timeseries = alphaVantage.TimeSeriesIntraDay("MSFT")
                 .SetInterval(Interval.FiveMinutes)
                 .SetOutputSize(OutputSize.Compact)
                 .GetRawDataAsync().Result;

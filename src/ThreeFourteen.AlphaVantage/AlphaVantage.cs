@@ -5,33 +5,33 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage
 {
-    public static class AlphaVantage
+    public class AlphaVantage
     {
-        private static AlphaVantageConfig _config;
-        private static Lazy<IAlphaVantageService> _service;
+        private AlphaVantageConfig _config;
+        private Lazy<IAlphaVantageService> _service;
 
-        static AlphaVantage()
+        public AlphaVantage()
         {
             _config = new AlphaVantageConfig();
             _service = new Lazy<IAlphaVantageService>(() => _config.Service ?? new AlphaVantageService(_config));
         }
 
-        public static CustomBuilder Custom(string symbol)
+        public CustomBuilder Custom(string symbol)
         {
             return new CustomBuilder(_service.Value, symbol);
         }
 
-        public static TimeSeriesIntraDayBuilder TimeSeriesIntraDay(string symbol)
+        public TimeSeriesIntraDayBuilder TimeSeriesIntraDay(string symbol)
         {
             return new TimeSeriesIntraDayBuilder(_service.Value, symbol);
         }
 
-        public static TimeSeriesWeeklyBuilder TimeSeriesWeekly(string symbol)
+        public TimeSeriesWeeklyBuilder TimeSeriesWeekly(string symbol)
         {
             return new TimeSeriesWeeklyBuilder(_service.Value, symbol);
         }
 
-        public static void Configure(Action<AlphaVantageConfig> configureAction)
+        public void Configure(Action<AlphaVantageConfig> configureAction)
         {
             configureAction?.Invoke(_config);
         }

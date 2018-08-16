@@ -9,12 +9,12 @@ namespace ThreeFourteen.AlphaVantage.Test.Builder
     public class TimeSeriesIntraDayBuilderTests : BuilderTestsBase
     {
         [Fact]
-        public void Get_ShouldReturnValidData()
+        public async void Get_ShouldReturnValidData()
         {
-            var timeseries = AlphaVantage.TimeSeriesIntraDay("MSFT")
+            var timeseries = await AlphaVantage.TimeSeriesIntraDay("MSFT")
                 .SetInterval(Interval.FiveMinutes)
                 .SetOutputSize(OutputSize.Compact)
-                .GetAsync().Result;
+                .GetAsync();
 
             ServiceMock.LatestParameters[ParameterFields.Symbol].ShouldBe("MSFT");
             ServiceMock.LatestParameters[ParameterFields.Function].ShouldBe(Function.TimeSeriesIntraDay.Value);

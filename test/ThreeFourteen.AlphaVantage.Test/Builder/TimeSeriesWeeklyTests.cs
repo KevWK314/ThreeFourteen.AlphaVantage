@@ -8,10 +8,10 @@ namespace ThreeFourteen.AlphaVantage.Test.Builder
     public class TimeSeriesWeeklyTests : BuilderTestsBase
     {
         [Fact]
-        public void Get_ShouldReturnValidData()
+        public async void Get_ShouldReturnValidData()
         {
-            var timeseries = AlphaVantage.TimeSeriesWeekly("MSFT")
-                .GetAsync().Result;
+            var timeseries = await AlphaVantage.TimeSeriesWeekly("MSFT")
+                .GetAsync();
 
             ServiceMock.LatestParameters[ParameterFields.Symbol].ShouldBe("MSFT");
             ServiceMock.LatestParameters[ParameterFields.Function].ShouldBe(Function.TimeSeriesWeekly.Value);
