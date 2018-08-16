@@ -14,6 +14,6 @@ namespace ThreeFourteen.AlphaVantage.Response
 
         public double Close { get; internal set; }
 
-        public int Volume { get; internal set; }
+        public long Volume { get; internal set; }
     }
 }

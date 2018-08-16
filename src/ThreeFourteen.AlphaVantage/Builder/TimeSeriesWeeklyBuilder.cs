@@ -41,7 +41,7 @@ namespace ThreeFourteen.AlphaVantage.Builder
                 data.High = day.First.Value<double>("2. high");
                 data.Low = day.First.Value<double>("3. low");
                 data.Close = day.First.Value<double>("4. close");
-                data.Volume = day.First.Value<int>("5. volume");
+                data.Volume = day.First.Value<long>("5. volume");
                 series.Add(data);
             }
 

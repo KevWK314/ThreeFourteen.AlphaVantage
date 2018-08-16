@@ -6,6 +6,8 @@
 
         public static readonly Function TimeSeriesWeekly = new Function("TIME_SERIES_WEEKLY");
 
+        public static readonly Function TimeSeriesMonthly = new Function("TIME_SERIES_MONTHLY");
+
         private Function(string value)
         {
             Value = value;

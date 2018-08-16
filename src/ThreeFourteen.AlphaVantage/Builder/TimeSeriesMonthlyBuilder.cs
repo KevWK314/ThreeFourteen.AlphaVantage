@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ThreeFourteen.AlphaVantage.Parameters;
 using ThreeFourteen.AlphaVantage.Response;
@@ -9,33 +8,16 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builder
 {
-    public class TimeSeriesIntraDayBuilder : BuilderBase, IHaveData<TimeSeriesEntry>, IIntervalBuilder, IOutputSizeBuilder
+    public class TimeSeriesMonthlyBuilder : BuilderBase, IHaveData<TimeSeriesEntry>
     {
-        private static readonly Interval[] Intervals = new[]
-        {
-            Interval.OneMinute,
-            Interval.FiveMinutes,
-            Interval.FifteenMinutes,
-            Interval.ThirtyMinutes,
-            Interval.SixtyMinutes
-        };
-
-        internal TimeSeriesIntraDayBuilder(IAlphaVantageService service, string symbol)
-                : base(service, symbol)
+        public TimeSeriesMonthlyBuilder(IAlphaVantageService service, string symbol)
+            : base(service, symbol)
         {
         }
 
-        protected override string[] RequiredFields => new[]
-        {
-            ParameterFields.Interval,
-        };
+        protected override string[] RequiredFields => new string[0];
 
-        protected override Function Function => Function.TimeSeriesIntraDay;
-
-        public Interval[] ValidIntervals()
-        {
-            return Intervals;
-        }
+        protected override Function Function => Function.TimeSeriesMonthly;
 
         public Task<Result<TimeSeriesEntry>> GetAsync()
         {
@@ -45,7 +27,7 @@ namespace ThreeFourteen.AlphaVantage.Builder
         private IEnumerable<TimeSeriesEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            if (!Regex.IsMatch(properties?.Name, "Time Series(.)"))
+            if (properties?.Name != "Monthly Time Series")
             {
                 throw new InvalidOperationException($"Unexpected node value: {properties?.Name ?? "null"}");
             }
