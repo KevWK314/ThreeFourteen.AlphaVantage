@@ -9,7 +9,7 @@ namespace ThreeFourteen.AlphaVantage.Configuration
         {
             // Defaults
             BaseAddress = "https://www.alphavantage.co";
-            RequestTimeout = TimeSpan.FromSeconds(30);
+            RequestTimeout = TimeSpan.FromSeconds(60);
         }
 
         public string BaseAddress { get; set; }

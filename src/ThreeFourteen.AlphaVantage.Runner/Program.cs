@@ -24,9 +24,9 @@ namespace ThreeFourteen.AlphaVantage.Runner
             alphaVantage.Configure(x => x.ApiKey = key);
 
             var timeseries = alphaVantage.TimeSeriesIntraDay("MSFT")
-                .SetInterval(Interval.FiveMinutes)
-                .SetOutputSize(OutputSize.Compact)
-                .GetRawDataAsync().Result;
+                .SetInterval(Interval.SixtyMinutes)
+                .SetOutputSize(OutputSize.Full)
+                .GetAsync().Result;
 
             Console.WriteLine(timeseries);        
 

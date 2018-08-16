@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ThreeFourteen.AlphaVantage.Parameters;
 using ThreeFourteen.AlphaVantage.Response;
@@ -44,7 +45,7 @@ namespace ThreeFourteen.AlphaVantage.Builder
         private IEnumerable<TimeSeriesEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            if (properties?.Name != "Time Series (15min)")
+            if (!Regex.IsMatch(properties?.Name, "Time Series(.)"))
             {
                 throw new InvalidOperationException($"Unexpected node value: {properties?.Name ?? "null"}");
             }
