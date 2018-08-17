@@ -12,6 +12,7 @@
     <None Remove="ExampleData\TimeSeriesIntraDay.json" />
     <None Remove="ExampleData\TimeSeriesMonthly.json" />
     <None Remove="ExampleData\TimeSeriesWeekly.json" />
+    <None Remove="ExampleData\TimeSeriesWeeklyAdjusted.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +29,7 @@
     <EmbeddedResource Include="ExampleData\TimeSeriesIntraDay.json" />
     <EmbeddedResource Include="ExampleData\TimeSeriesMonthly.json" />
     <EmbeddedResource Include="ExampleData\TimeSeriesWeekly.json" />
+    <EmbeddedResource Include="ExampleData\TimeSeriesWeeklyAdjusted.json" />
   </ItemGroup>
 
   <ItemGroup>

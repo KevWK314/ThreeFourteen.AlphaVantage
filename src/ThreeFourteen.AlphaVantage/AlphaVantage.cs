@@ -36,6 +36,11 @@ namespace ThreeFourteen.AlphaVantage
             return new TimeSeriesWeeklyBuilder(_service.Value, symbol);
         }
 
+        public TimeSeriesWeeklyAdjustedBuilder TimeSeriesWeeklyAdjusted(string symbol)
+        {
+            return new TimeSeriesWeeklyAdjustedBuilder(_service.Value, symbol);
+        }
+
         public TimeSeriesMonthlyBuilder TimeSeriesMonthly(string symbol)
         {
             return new TimeSeriesMonthlyBuilder(_service.Value, symbol);

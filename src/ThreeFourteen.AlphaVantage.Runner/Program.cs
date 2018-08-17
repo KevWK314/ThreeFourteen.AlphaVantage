@@ -23,12 +23,15 @@ namespace ThreeFourteen.AlphaVantage.Runner
 
             alphaVantage.Configure(x => x.ApiKey = key);
 
-            var timeseries = alphaVantage.TimeSeriesIntraDay("MSFT")
-                .SetInterval(Interval.SixtyMinutes)
-                .SetOutputSize(OutputSize.Full)
+            //var timeseries = alphaVantage.TimeSeriesIntraDay("MSFT")
+            //    .SetInterval(Interval.SixtyMinutes)
+            //    .SetOutputSize(OutputSize.Full)
+            //    .GetAsync().Result;
+
+            var timeseries = alphaVantage.TimeSeriesWeeklyAdjusted("MSFT")
                 .GetAsync().Result;
 
-            Console.WriteLine(timeseries);        
+            Console.WriteLine(timeseries.Meta["Information"]);        
 
             Console.ReadKey();
         }
