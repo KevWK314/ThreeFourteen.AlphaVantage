@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using ThreeFourteen.AlphaVantage.Response;
 
-namespace ThreeFourteen.AlphaVantage.Builder
+namespace ThreeFourteen.AlphaVantage
 {
     public interface IHaveData<T>
     {

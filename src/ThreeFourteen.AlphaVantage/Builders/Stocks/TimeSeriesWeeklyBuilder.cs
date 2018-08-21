@@ -3,22 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ThreeFourteen.AlphaVantage.Parameters;
 using ThreeFourteen.AlphaVantage.Response;
 using ThreeFourteen.AlphaVantage.Service;
 
-namespace ThreeFourteen.AlphaVantage.Builder
+namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 {
-    public class TimeSeriesDailyBuilder : BuilderBase, IHaveData<TimeSeriesEntry>, IOutputSizeBuilder
+    public class TimeSeriesWeeklyBuilder : BuilderBase, IHaveData<TimeSeriesEntry>
     {
-        public TimeSeriesDailyBuilder(IAlphaVantageService service, string symbol)
+        public TimeSeriesWeeklyBuilder(IAlphaVantageService service, string symbol)
             : base(service, symbol)
         {
         }
 
         protected override string[] RequiredFields => new string[0];
 
-        protected override Function Function => Function.TimeSeriesDaily;
+        protected override Function Function => Function.TimeSeriesWeekly;
 
         public Task<Result<TimeSeriesEntry>> GetAsync()
         {
@@ -28,7 +27,7 @@ namespace ThreeFourteen.AlphaVantage.Builder
         private IEnumerable<TimeSeriesEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            if (properties?.Name != "Time Series (Daily)")
+            if (properties?.Name != "Weekly Time Series")
             {
                 throw new InvalidOperationException($"Unexpected node value: {properties?.Name ?? "null"}");
             }

@@ -1,7 +1,5 @@
 ﻿using Shouldly;
 using System.Linq;
-using ThreeFourteen.AlphaVantage.Builder;
-using ThreeFourteen.AlphaVantage.Parameters;
 using Xunit;
 
 namespace ThreeFourteen.AlphaVantage.Test.Builder
@@ -11,7 +9,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builder
         [Fact]
         public async void Get_ShouldReturnValidData()
         {
-            var timeseries = await AlphaVantage.TimeSeriesIntraDay("MSFT")
+            var timeseries = await AlphaVantage.Stocks.TimeSeriesIntraDay("MSFT")
                 .SetInterval(Interval.FiveMinutes)
                 .SetOutputSize(OutputSize.Compact)
                 .GetAsync();

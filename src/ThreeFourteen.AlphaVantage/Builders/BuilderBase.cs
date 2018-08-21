@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using ThreeFourteen.AlphaVantage.Parameters;
 using ThreeFourteen.AlphaVantage.Response;
 using ThreeFourteen.AlphaVantage.Service;
 
-namespace ThreeFourteen.AlphaVantage.Builder
+namespace ThreeFourteen.AlphaVantage.Builders
 {
     public abstract class BuilderBase
     {

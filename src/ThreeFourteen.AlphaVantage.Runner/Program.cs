@@ -1,6 +1,4 @@
 ﻿using System;
-using ThreeFourteen.AlphaVantage.Builder;
-using ThreeFourteen.AlphaVantage.Parameters;
 
 namespace ThreeFourteen.AlphaVantage.Runner
 {
@@ -28,7 +26,7 @@ namespace ThreeFourteen.AlphaVantage.Runner
             //    .SetOutputSize(OutputSize.Full)
             //    .GetAsync().Result;
 
-            var timeseries = alphaVantage.TimeSeriesWeeklyAdjusted("MSFT")
+            var timeseries = alphaVantage.Stocks.TimeSeriesWeeklyAdjusted("MSFT")
                 .GetAsync().Result;
 
             Console.WriteLine(timeseries.Meta["Information"]);        

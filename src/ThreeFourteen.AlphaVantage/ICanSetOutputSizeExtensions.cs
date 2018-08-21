@@ -1,16 +1,12 @@
 ﻿using System;
-using ThreeFourteen.AlphaVantage.Parameters;
+using ThreeFourteen.AlphaVantage.Builders;
 
-namespace ThreeFourteen.AlphaVantage.Builder
+namespace ThreeFourteen.AlphaVantage
 {
-    public interface IOutputSizeBuilder
-    {
-    }
-
-    public static class OutputSizeBuilderExtensions
+    public static class ICanSetOutputSizeExtensions
     {
         public static T SetOutputSize<T>(this T builder, OutputSize outputSize)
-             where T : BuilderBase, IOutputSizeBuilder
+             where T : BuilderBase, ICanSetOutputSize
         {
             if (outputSize == null) throw new ArgumentNullException(nameof(outputSize));
 

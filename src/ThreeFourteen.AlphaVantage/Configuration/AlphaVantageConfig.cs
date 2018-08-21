@@ -5,7 +5,7 @@ namespace ThreeFourteen.AlphaVantage.Configuration
 {
     public class AlphaVantageConfig
     {
-        public AlphaVantageConfig()
+        internal AlphaVantageConfig()
         {
             // Defaults
             BaseAddress = "https://www.alphavantage.co";

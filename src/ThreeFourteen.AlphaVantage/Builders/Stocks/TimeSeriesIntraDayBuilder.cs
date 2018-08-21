@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using ThreeFourteen.AlphaVantage.Parameters;
 using ThreeFourteen.AlphaVantage.Response;
 using ThreeFourteen.AlphaVantage.Service;
 
-namespace ThreeFourteen.AlphaVantage.Builder
+namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 {
-    public class TimeSeriesIntraDayBuilder : BuilderBase, IHaveData<TimeSeriesEntry>, IIntervalBuilder, IOutputSizeBuilder
+    public class TimeSeriesIntraDayBuilder : BuilderBase, IHaveData<TimeSeriesEntry>, ICanSetInterval, ICanSetOutputSize
     {
         private static readonly Interval[] Intervals = new[]
         {

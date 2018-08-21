@@ -1,4 +1,4 @@
-﻿namespace ThreeFourteen.AlphaVantage.Parameters
+﻿namespace ThreeFourteen.AlphaVantage
 {
     public class OutputSize
     {

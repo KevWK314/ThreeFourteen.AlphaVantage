@@ -1,6 +1,5 @@
 ﻿using Shouldly;
 using System.Linq;
-using ThreeFourteen.AlphaVantage.Parameters;
 using Xunit;
 
 namespace ThreeFourteen.AlphaVantage.Test.Builder
@@ -10,7 +9,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builder
         [Fact]
         public async void Get_ShouldReturnValidData()
         {
-            var timeseries = await AlphaVantage.TimeSeriesDailyAdjusted("MSFT")
+            var timeseries = await AlphaVantage.Stocks.TimeSeriesDailyAdjusted("MSFT")
                 .GetAsync();
 
             ServiceMock.LatestParameters[ParameterFields.Symbol].ShouldBe("MSFT");

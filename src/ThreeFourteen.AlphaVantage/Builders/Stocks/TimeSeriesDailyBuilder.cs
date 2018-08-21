@@ -3,29 +3,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ThreeFourteen.AlphaVantage.Parameters;
 using ThreeFourteen.AlphaVantage.Response;
 using ThreeFourteen.AlphaVantage.Service;
 
-namespace ThreeFourteen.AlphaVantage.Builder
+namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 {
-    public class TimeSeriesDailyAdjustedBuilder : BuilderBase, IHaveData<TimeSeriesAdjustedEntry>, IOutputSizeBuilder
+    public class TimeSeriesDailyBuilder : BuilderBase, IHaveData<TimeSeriesEntry>, ICanSetOutputSize
     {
-        public TimeSeriesDailyAdjustedBuilder(IAlphaVantageService service, string symbol)
+        public TimeSeriesDailyBuilder(IAlphaVantageService service, string symbol)
             : base(service, symbol)
         {
         }
 
         protected override string[] RequiredFields => new string[0];
 
-        protected override Function Function => Function.TimeSeriesDailyAdjusted;
+        protected override Function Function => Function.TimeSeriesDaily;
 
-        public Task<Result<TimeSeriesAdjustedEntry>> GetAsync()
+        public Task<Result<TimeSeriesEntry>> GetAsync()
         {
             return GetDataAsync(Parse);
         }
 
-        private IEnumerable<TimeSeriesAdjustedEntry> Parse(JToken token)
+        private IEnumerable<TimeSeriesEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
             if (properties?.Name != "Time Series (Daily)")
@@ -34,7 +33,7 @@ namespace ThreeFourteen.AlphaVantage.Builder
             }
 
             return properties.First.Children()
-                .Select(x => ((JProperty)x).ToTimeSeriesAdjusted())
+                .Select(x => ((JProperty)x).ToTimeSeries())
                 .ToList();
         }
     }

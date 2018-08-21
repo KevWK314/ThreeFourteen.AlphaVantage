@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Linq;
-using ThreeFourteen.AlphaVantage.Parameters;
+using ThreeFourteen.AlphaVantage.Builders;
 
-namespace ThreeFourteen.AlphaVantage.Builder
+namespace ThreeFourteen.AlphaVantage
 {
-    public interface IIntervalBuilder
-    {
-        Interval[] ValidIntervals();
-    }
-
-    public static class IntervalExtensions
+    public static class ICanSetIntervalExtensions
     {
         public static T SetInterval<T>(this T builder, Interval interval)
-             where T : BuilderBase, IIntervalBuilder
+             where T : BuilderBase, ICanSetInterval
         {
             if (interval == null) throw new ArgumentNullException(nameof(interval));
 

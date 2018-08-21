@@ -1,7 +1,6 @@
-﻿using ThreeFourteen.AlphaVantage.Parameters;
-using ThreeFourteen.AlphaVantage.Service;
+﻿using ThreeFourteen.AlphaVantage.Service;
 
-namespace ThreeFourteen.AlphaVantage.Builder
+namespace ThreeFourteen.AlphaVantage.Builders
 {
     public class CustomBuilder : BuilderBase
     {
