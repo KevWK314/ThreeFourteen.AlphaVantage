@@ -4,4 +4,4 @@ dotnet: 2.0.0
 script:
   - dotnet restore
   - dotnet build ./ThreeFourteen.AlphaVantage.sln
-  - dotnet test .test/ThreeFourteen.AlphaVantage.Test
+  - dotnet test ./test/ThreeFourteen.AlphaVantage.Test
