@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ThreeFourteen.AlphaVantage.Parameters;
 using ThreeFourteen.AlphaVantage.Response;
@@ -32,22 +33,9 @@ namespace ThreeFourteen.AlphaVantage.Builder
                 throw new InvalidOperationException($"Unexpected node value: {properties?.Name ?? "null"}");
             }
 
-            var series = new List<TimeSeriesAdjustedEntry>();
-            foreach (JProperty day in properties.First.Children())
-            {
-                var date = Formats.ParseDateTime(day.Name);
-                var data = new TimeSeriesAdjustedEntry { Timestamp = date };
-                data.Open = day.First.Value<double>("1. open");
-                data.High = day.First.Value<double>("2. high");
-                data.Low = day.First.Value<double>("3. low");
-                data.Close = day.First.Value<double>("4. close");
-                data.AdjustedClose = day.First.Value<double>("5. adjusted close");
-                data.Volume = day.First.Value<long>("6. volume");
-                data.DividendAmount = day.First.Value<double>("7. dividend amount");
-                series.Add(data);
-            }
-
-            return series;
+            return properties.First.Children()
+                .Select(x => ((JProperty)x).ToTimeSeriesAdjusted())
+                .ToList();
         }
     }
 }

@@ -15,9 +15,11 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
         {
             { "TIME_SERIES_INTRADAY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesIntraDay.json" },
             { "TIME_SERIES_DAILY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesDaily.json" },
+            { "TIME_SERIES_DAILY_ADJUSTED", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesDailyAdjusted.json" },
             { "TIME_SERIES_WEEKLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesWeekly.json" },
             { "TIME_SERIES_WEEKLY_ADJUSTED", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesWeeklyAdjusted.json" },
             { "TIME_SERIES_MONTHLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesMonthly.json" },
+            { "TIME_SERIES_MONTHLY_ADJUSTED", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesMonthlyAdjusted.json" },
             { "ERROR", "ThreeFourteen.AlphaVantage.Test.ExampleData.Error.json" }
         };
 

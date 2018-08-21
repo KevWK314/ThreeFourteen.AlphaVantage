@@ -9,32 +9,32 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builder
 {
-    public class TimeSeriesMonthlyBuilder : BuilderBase, IHaveData<TimeSeriesEntry>
+    public class TimeSeriesDailyAdjustedBuilder : BuilderBase, IHaveData<TimeSeriesAdjustedEntry>, IOutputSizeBuilder
     {
-        public TimeSeriesMonthlyBuilder(IAlphaVantageService service, string symbol)
+        public TimeSeriesDailyAdjustedBuilder(IAlphaVantageService service, string symbol)
             : base(service, symbol)
         {
         }
 
         protected override string[] RequiredFields => new string[0];
 
-        protected override Function Function => Function.TimeSeriesMonthly;
+        protected override Function Function => Function.TimeSeriesDailyAdjusted;
 
-        public Task<Result<TimeSeriesEntry>> GetAsync()
+        public Task<Result<TimeSeriesAdjustedEntry>> GetAsync()
         {
             return GetDataAsync(Parse);
         }
 
-        private IEnumerable<TimeSeriesEntry> Parse(JToken token)
+        private IEnumerable<TimeSeriesAdjustedEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            if (properties?.Name != "Monthly Time Series")
+            if (properties?.Name != "Time Series (Daily)")
             {
                 throw new InvalidOperationException($"Unexpected node value: {properties?.Name ?? "null"}");
             }
 
             return properties.First.Children()
-                .Select(x => ((JProperty)x).ToTimeSeries())
+                .Select(x => ((JProperty)x).ToTimeSeriesAdjusted())
                 .ToList();
         }
     }

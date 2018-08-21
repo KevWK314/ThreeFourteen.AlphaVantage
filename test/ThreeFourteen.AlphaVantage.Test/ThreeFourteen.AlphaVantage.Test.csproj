@@ -9,8 +9,10 @@
   <ItemGroup>
     <None Remove="ExampleData\Error.json" />
     <None Remove="ExampleData\TimeSeriesDaily.json" />
+    <None Remove="ExampleData\TimeSeriesDailyAdjusted.json" />
     <None Remove="ExampleData\TimeSeriesIntraDay.json" />
     <None Remove="ExampleData\TimeSeriesMonthly.json" />
+    <None Remove="ExampleData\TimeSeriesMonthlyAdjusted.json" />
     <None Remove="ExampleData\TimeSeriesWeekly.json" />
     <None Remove="ExampleData\TimeSeriesWeeklyAdjusted.json" />
   </ItemGroup>
@@ -26,8 +28,10 @@
   <ItemGroup>
     <EmbeddedResource Include="ExampleData\Error.json" />
     <EmbeddedResource Include="ExampleData\TimeSeriesDaily.json" />
+    <EmbeddedResource Include="ExampleData\TimeSeriesDailyAdjusted.json" />
     <EmbeddedResource Include="ExampleData\TimeSeriesIntraDay.json" />
     <EmbeddedResource Include="ExampleData\TimeSeriesMonthly.json" />
+    <EmbeddedResource Include="ExampleData\TimeSeriesMonthlyAdjusted.json" />
     <EmbeddedResource Include="ExampleData\TimeSeriesWeekly.json" />
     <EmbeddedResource Include="ExampleData\TimeSeriesWeeklyAdjusted.json" />
   </ItemGroup>

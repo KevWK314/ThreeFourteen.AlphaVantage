@@ -31,6 +31,11 @@ namespace ThreeFourteen.AlphaVantage
             return new TimeSeriesDailyBuilder(_service.Value, symbol);
         }
 
+        public TimeSeriesDailyAdjustedBuilder TimeSeriesDailyAdjusted(string symbol)
+        {
+            return new TimeSeriesDailyAdjustedBuilder(_service.Value, symbol);
+        }
+
         public TimeSeriesWeeklyBuilder TimeSeriesWeekly(string symbol)
         {
             return new TimeSeriesWeeklyBuilder(_service.Value, symbol);
@@ -44,6 +49,11 @@ namespace ThreeFourteen.AlphaVantage
         public TimeSeriesMonthlyBuilder TimeSeriesMonthly(string symbol)
         {
             return new TimeSeriesMonthlyBuilder(_service.Value, symbol);
+        }
+
+        public TimeSeriesMonthlyAdjustedBuilder TimeSeriesMonthlyAdjusted(string symbol)
+        {
+            return new TimeSeriesMonthlyAdjustedBuilder(_service.Value, symbol);
         }
 
         public void Configure(Action<AlphaVantageConfig> configureAction)
