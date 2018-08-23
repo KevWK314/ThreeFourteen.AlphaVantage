@@ -28,8 +28,6 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
         private IEnumerable<TimeSeriesAdjustedEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            properties.ValidateName("Weekly Adjusted Time Series");
-
             return properties.First.Children()
                 .Select(x => ((JProperty)x).ToTimeSeriesAdjusted())
                 .ToList();

@@ -22,6 +22,9 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
             { "TIME_SERIES_MONTHLY_ADJUSTED", "ThreeFourteen.AlphaVantage.Test.ExampleData.Stocks.TimeSeriesMonthlyAdjusted.json" },
             // FX
             { "FX_INTRADAY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.IntraDay.json" },
+            { "FX_DAILY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.Daily.json" },
+            { "FX_WEEKLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.Weekly.json" },
+            { "FX_MONTHLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.Monthly.json" },
             // Other
             { "ERROR", "ThreeFourteen.AlphaVantage.Test.ExampleData.Error.json" }
         };

@@ -16,6 +16,9 @@
         public static class Fx
         {
             public static readonly Function IntraDay = new Function("FX_INTRADAY");
+            public static readonly Function Daily = new Function("FX_DAILY");
+            public static readonly Function Weekly = new Function("FX_WEEKLY");
+            public static readonly Function Monthly = new Function("FX_MONTHLY");
         }
 
         private Function(string value)

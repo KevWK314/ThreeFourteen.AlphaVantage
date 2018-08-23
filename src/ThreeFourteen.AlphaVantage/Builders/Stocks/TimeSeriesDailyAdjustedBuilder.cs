@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,8 +27,6 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
         private IEnumerable<TimeSeriesAdjustedEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            properties.ValidateName(@"Time Series \(Daily\)");
-
             return properties.First.Children()
                 .Select(x => ((JProperty)x).ToTimeSeriesAdjusted())
                 .ToList();

@@ -16,5 +16,20 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
         {
             return new IntraDayBuilder(_getService(), from, to);
         }
+
+        public DailyBuilder Daily(string from, string to)
+        {
+            return new DailyBuilder(_getService(), from, to);
+        }
+
+        public WeeklyBuilder Weekly(string from, string to)
+        {
+            return new WeeklyBuilder(_getService(), from, to);
+        }
+
+        public MonthlyBuilder Monthly(string from, string to)
+        {
+            return new MonthlyBuilder(_getService(), from, to);
+        }
     }
 }

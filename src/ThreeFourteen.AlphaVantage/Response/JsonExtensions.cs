@@ -6,14 +6,6 @@ namespace ThreeFourteen.AlphaVantage.Response
 {
     public static class JsonExtensions
     {
-        public static void ValidateName(this JProperty token, string regex)
-        {
-            if (!Regex.IsMatch(token?.Name, regex))
-            {
-                throw new InvalidOperationException($"Unexpected node value: {token?.Name ?? "null"}");
-            }
-        }
-
         public static TimeSeriesEntry ToTimeSeries(this JProperty token)
         {
             var date = Formats.ParseDateTime(token.Name);

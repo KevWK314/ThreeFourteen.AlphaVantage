@@ -16,6 +16,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders.Fx
             ServiceMock.LatestParameters[ParameterFields.FromSymbol].ShouldBe("EUR");
             ServiceMock.LatestParameters[ParameterFields.ToSymbol].ShouldBe("USD");
             ServiceMock.LatestParameters[ParameterFields.Function].ShouldBe(Function.Fx.IntraDay.Value);
+            ServiceMock.LatestParameters[ParameterFields.Interval].ShouldBe(Interval.FiveMinutes.Value);
 
             result.Meta.Count.ShouldBe(7);
             result.Meta["Information"].ShouldBe("FX Intraday (5min) Time Series");
