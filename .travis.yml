@@ -1,0 +1,7 @@
+language: csharp
+mono: none
+dotnet: 2.0.0
+script:
+  - dotnet restore
+  - dotnet build ./ThreeFourteen.AlphaVantage.sln
+  - dotnet test ./test/ThreeFourteen.AlphaVantage.Test
