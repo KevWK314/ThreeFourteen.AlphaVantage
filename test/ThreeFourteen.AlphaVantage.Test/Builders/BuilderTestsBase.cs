@@ -1,6 +1,6 @@
 ﻿using ThreeFourteen.AlphaVantage.Test.Mock;
 
-namespace ThreeFourteen.AlphaVantage.Test.Builder
+namespace ThreeFourteen.AlphaVantage.Test.Builders
 {
     public abstract class BuilderTestsBase
     {

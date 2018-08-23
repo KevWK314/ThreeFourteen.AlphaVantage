@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ThreeFourteen.AlphaVantage.Response;
 using ThreeFourteen.AlphaVantage.Service;
@@ -21,16 +19,18 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
         };
 
         internal TimeSeriesIntraDayBuilder(IAlphaVantageService service, string symbol)
-                : base(service, symbol)
+            : base(service)
         {
+            SetField(ParameterFields.Symbol, symbol);
         }
 
-        protected override string[] RequiredFields => new[]
+        protected override string[] RequiredFields => new[] 
         {
-            ParameterFields.Interval,
+            ParameterFields.Symbol,
+            ParameterFields.Interval
         };
 
-        protected override Function Function => Function.TimeSeriesIntraDay;
+        protected override Function Function => Function.Stocks.TimeSeriesIntraDay;
 
         public Interval[] ValidIntervals()
         {
@@ -45,10 +45,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
         private IEnumerable<TimeSeriesEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            if (!Regex.IsMatch(properties?.Name, "Time Series(.)"))
-            {
-                throw new InvalidOperationException($"Unexpected node value: {properties?.Name ?? "null"}");
-            }
+            properties.ValidateName("Time Series(.)");
 
             return properties.First.Children()
                 .Select(x => ((JProperty)x).ToTimeSeries())

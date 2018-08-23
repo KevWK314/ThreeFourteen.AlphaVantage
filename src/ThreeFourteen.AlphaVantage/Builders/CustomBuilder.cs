@@ -5,8 +5,9 @@ namespace ThreeFourteen.AlphaVantage.Builders
     public class CustomBuilder : BuilderBase
     {
         internal CustomBuilder(IAlphaVantageService service, string symbol)
-            : base(service, symbol)
+            : base(service)
         {
+            SetField(ParameterFields.Symbol, symbol);
         }
 
         protected override string[] RequiredFields => new string[] { ParameterFields.Function };

@@ -12,13 +12,17 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
 
         private static readonly Dictionary<string, string> FileLookup = new Dictionary<string, string>
         {
-            { "TIME_SERIES_INTRADAY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesIntraDay.json" },
-            { "TIME_SERIES_DAILY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesDaily.json" },
-            { "TIME_SERIES_DAILY_ADJUSTED", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesDailyAdjusted.json" },
-            { "TIME_SERIES_WEEKLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesWeekly.json" },
-            { "TIME_SERIES_WEEKLY_ADJUSTED", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesWeeklyAdjusted.json" },
-            { "TIME_SERIES_MONTHLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesMonthly.json" },
-            { "TIME_SERIES_MONTHLY_ADJUSTED", "ThreeFourteen.AlphaVantage.Test.ExampleData.TimeSeriesMonthlyAdjusted.json" },
+            // Stock
+            { "TIME_SERIES_INTRADAY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Stocks.TimeSeriesIntraDay.json" },
+            { "TIME_SERIES_DAILY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Stocks.TimeSeriesDaily.json" },
+            { "TIME_SERIES_DAILY_ADJUSTED", "ThreeFourteen.AlphaVantage.Test.ExampleData.Stocks.TimeSeriesDailyAdjusted.json" },
+            { "TIME_SERIES_WEEKLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Stocks.TimeSeriesWeekly.json" },
+            { "TIME_SERIES_WEEKLY_ADJUSTED", "ThreeFourteen.AlphaVantage.Test.ExampleData.Stocks.TimeSeriesWeeklyAdjusted.json" },
+            { "TIME_SERIES_MONTHLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Stocks.TimeSeriesMonthly.json" },
+            { "TIME_SERIES_MONTHLY_ADJUSTED", "ThreeFourteen.AlphaVantage.Test.ExampleData.Stocks.TimeSeriesMonthlyAdjusted.json" },
+            // FX
+            { "FX_INTRADAY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.IntraDay.json" },
+            // Other
             { "ERROR", "ThreeFourteen.AlphaVantage.Test.ExampleData.Error.json" }
         };
 

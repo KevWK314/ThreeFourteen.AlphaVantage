@@ -11,13 +11,14 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
     public class TimeSeriesWeeklyBuilder : BuilderBase, IHaveData<TimeSeriesEntry>
     {
         public TimeSeriesWeeklyBuilder(IAlphaVantageService service, string symbol)
-            : base(service, symbol)
+            : base(service)
         {
+            SetField(ParameterFields.Symbol, symbol);
         }
 
-        protected override string[] RequiredFields => new string[0];
+        protected override string[] RequiredFields => new[] { ParameterFields.Symbol };
 
-        protected override Function Function => Function.TimeSeriesWeekly;
+        protected override Function Function => Function.Stocks.TimeSeriesWeekly;
 
         public Task<Result<TimeSeriesEntry>> GetAsync()
         {
@@ -27,10 +28,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
         private IEnumerable<TimeSeriesEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            if (properties?.Name != "Weekly Time Series")
-            {
-                throw new InvalidOperationException($"Unexpected node value: {properties?.Name ?? "null"}");
-            }
+            properties.ValidateName("Weekly Time Series");
 
             return properties.First.Children()
                 .Select(x => ((JProperty)x).ToTimeSeries())

@@ -2,7 +2,7 @@
 using System.Linq;
 using Xunit;
 
-namespace ThreeFourteen.AlphaVantage.Test.Builder
+namespace ThreeFourteen.AlphaVantage.Test.Builders.Stocks
 {
     public class TimeSeriesDailyBuilderTests : BuilderTestsBase
     {
@@ -14,7 +14,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builder
                 .GetAsync();
 
             ServiceMock.LatestParameters[ParameterFields.Symbol].ShouldBe("MSFT");
-            ServiceMock.LatestParameters[ParameterFields.Function].ShouldBe(Function.TimeSeriesDaily.Value);
+            ServiceMock.LatestParameters[ParameterFields.Function].ShouldBe(Function.Stocks.TimeSeriesDaily.Value);
             ServiceMock.LatestParameters[ParameterFields.OutputSize].ShouldBe(OutputSize.Compact.Value);
 
             timeseries.Meta.Count.ShouldBe(5);

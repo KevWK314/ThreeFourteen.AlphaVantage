@@ -11,13 +11,14 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
     public class TimeSeriesMonthlyAdjustedBuilder : BuilderBase, IHaveData<TimeSeriesAdjustedEntry>
     {
         public TimeSeriesMonthlyAdjustedBuilder(IAlphaVantageService service, string symbol)
-            : base(service, symbol)
+            : base(service)
         {
+            SetField(ParameterFields.Symbol, symbol);
         }
 
-        protected override string[] RequiredFields => new string[0];
+        protected override string[] RequiredFields => new[] { ParameterFields.Symbol };
 
-        protected override Function Function => Function.TimeSeriesMonthlyAdjusted;
+        protected override Function Function => Function.Stocks.TimeSeriesMonthlyAdjusted;
 
         public Task<Result<TimeSeriesAdjustedEntry>> GetAsync()
         {
@@ -27,10 +28,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
         private IEnumerable<TimeSeriesAdjustedEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            if (properties?.Name != "Monthly Adjusted Time Series")
-            {
-                throw new InvalidOperationException($"Unexpected node value: {properties?.Name ?? "null"}");
-            }
+            properties.ValidateName("Monthly Adjusted Time Series");
 
             return properties.First.Children()
                 .Select(x => ((JProperty)x).ToTimeSeriesAdjusted())

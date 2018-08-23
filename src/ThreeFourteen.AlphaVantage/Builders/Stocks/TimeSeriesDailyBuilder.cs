@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,13 +10,14 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
     public class TimeSeriesDailyBuilder : BuilderBase, IHaveData<TimeSeriesEntry>, ICanSetOutputSize
     {
         public TimeSeriesDailyBuilder(IAlphaVantageService service, string symbol)
-            : base(service, symbol)
+            : base(service)
         {
+            SetField(ParameterFields.Symbol, symbol);
         }
 
-        protected override string[] RequiredFields => new string[0];
+        protected override string[] RequiredFields => new[] { ParameterFields.Symbol };
 
-        protected override Function Function => Function.TimeSeriesDaily;
+        protected override Function Function => Function.Stocks.TimeSeriesDaily;
 
         public Task<Result<TimeSeriesEntry>> GetAsync()
         {
@@ -27,10 +27,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
         private IEnumerable<TimeSeriesEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            if (properties?.Name != "Time Series (Daily)")
-            {
-                throw new InvalidOperationException($"Unexpected node value: {properties?.Name ?? "null"}");
-            }
+            properties.ValidateName(@"Time Series \(Daily\)");
 
             return properties.First.Children()
                 .Select(x => ((JProperty)x).ToTimeSeries())

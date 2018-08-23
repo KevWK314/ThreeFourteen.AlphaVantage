@@ -17,11 +17,10 @@ namespace ThreeFourteen.AlphaVantage.Builders
 
         protected abstract Function Function { get; }
 
-        protected BuilderBase(IAlphaVantageService service, string symbol)
+        protected BuilderBase(IAlphaVantageService service)
         {
             _service = service;
 
-            SetField(ParameterFields.Symbol, symbol);
             if (Function != null)
             {
                 SetField(ParameterFields.Function, Function.Value);

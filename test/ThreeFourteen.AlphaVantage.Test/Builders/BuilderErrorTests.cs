@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Shouldly;
 using Xunit;
 
-namespace ThreeFourteen.AlphaVantage.Test.Builder
+namespace ThreeFourteen.AlphaVantage.Test.Builders
 {
     public class BuilderErrorTests : BuilderTestsBase
     {
