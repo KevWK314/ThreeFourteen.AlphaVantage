@@ -8,8 +8,8 @@
             Data = data;
         }
 
-        public Metadata Meta { get; private set; }
+        public Metadata Meta { get; }
 
-        public T[] Data { get; private set; }
+        public T[] Data { get; }
     }
 }

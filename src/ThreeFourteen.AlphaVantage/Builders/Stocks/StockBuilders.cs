@@ -12,39 +12,39 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
             _getService = getService;
         }
 
-        public TimeSeriesIntraDayBuilder TimeSeriesIntraDay(string symbol)
+        public StockIntraDayBuilder TimeSeriesIntraDay(string symbol)
         {
-            return new TimeSeriesIntraDayBuilder(_getService(), symbol);
+            return new StockIntraDayBuilder(_getService(), symbol);
         }
 
-        public TimeSeriesDailyBuilder TimeSeriesDaily(string symbol)
+        public StockDailyBuilder TimeSeriesDaily(string symbol)
         {
-            return new TimeSeriesDailyBuilder(_getService(), symbol);
+            return new StockDailyBuilder(_getService(), symbol);
         }
 
-        public TimeSeriesDailyAdjustedBuilder TimeSeriesDailyAdjusted(string symbol)
+        public StockDailyAdjustedBuilder TimeSeriesDailyAdjusted(string symbol)
         {
-            return new TimeSeriesDailyAdjustedBuilder(_getService(), symbol);
+            return new StockDailyAdjustedBuilder(_getService(), symbol);
         }
 
-        public TimeSeriesWeeklyBuilder TimeSeriesWeekly(string symbol)
+        public StockWeeklyBuilder TimeSeriesWeekly(string symbol)
         {
-            return new TimeSeriesWeeklyBuilder(_getService(), symbol);
+            return new StockWeeklyBuilder(_getService(), symbol);
         }
 
-        public TimeSeriesWeeklyAdjustedBuilder TimeSeriesWeeklyAdjusted(string symbol)
+        public StockWeeklyAdjustedBuilder TimeSeriesWeeklyAdjusted(string symbol)
         {
-            return new TimeSeriesWeeklyAdjustedBuilder(_getService(), symbol);
+            return new StockWeeklyAdjustedBuilder(_getService(), symbol);
         }
 
-        public TimeSeriesMonthlyBuilder TimeSeriesMonthly(string symbol)
+        public StockMonthlyBuilder TimeSeriesMonthly(string symbol)
         {
-            return new TimeSeriesMonthlyBuilder(_getService(), symbol);
+            return new StockMonthlyBuilder(_getService(), symbol);
         }
 
-        public TimeSeriesMonthlyAdjustedBuilder TimeSeriesMonthlyAdjusted(string symbol)
+        public StockMonthlyAdjustedBuilder TimeSeriesMonthlyAdjusted(string symbol)
         {
-            return new TimeSeriesMonthlyAdjustedBuilder(_getService(), symbol);
+            return new StockMonthlyAdjustedBuilder(_getService(), symbol);
         }
 
     }

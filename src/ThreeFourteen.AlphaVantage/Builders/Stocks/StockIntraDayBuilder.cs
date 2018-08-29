@@ -7,18 +7,18 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 {
-    public class TimeSeriesIntraDayBuilder : BuilderBase, IHaveData<TimeSeriesEntry>, ICanSetInterval, ICanSetOutputSize
+    public class StockIntraDayBuilder : BuilderBase, IHaveData<TimeSeriesEntry>, ICanSetInterval, ICanSetOutputSize
     {
-        private static readonly Interval[] Intervals = new[]
-        {
-            Interval.OneMinute,
-            Interval.FiveMinutes,
-            Interval.FifteenMinutes,
-            Interval.ThirtyMinutes,
-            Interval.SixtyMinutes
-        };
+        private static readonly Interval[] Intervals =
+            {
+                Interval.OneMinute,
+                Interval.FiveMinutes,
+                Interval.FifteenMinutes,
+                Interval.ThirtyMinutes,
+                Interval.SixtyMinutes
+            };
 
-        internal TimeSeriesIntraDayBuilder(IAlphaVantageService service, string symbol)
+        internal StockIntraDayBuilder(IAlphaVantageService service, string symbol)
             : base(service)
         {
             SetField(ParameterFields.Symbol, symbol);

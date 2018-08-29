@@ -4,7 +4,7 @@ using Xunit;
 
 namespace ThreeFourteen.AlphaVantage.Test.Builders.Fx
 {
-    public class MonthlyBuilderTests : BuilderTestsBase
+    public class FxMonthlyBuilderTests : BuilderTestsBase
     {
         [Fact(Skip = "Pending data")]
         public async void Get_ShouldReturnValidData()

@@ -4,26 +4,23 @@ using Xunit;
 
 namespace ThreeFourteen.AlphaVantage.Test.Builders.Fx
 {
-    public class DailyBuilderTests : BuilderTestsBase
+    public class FxWeeklyBuilderTests : BuilderTestsBase
     {
-        [Fact]
+        [Fact(Skip = "Pending data")]
         public async void Get_ShouldReturnValidData()
         {
-            var result = await AlphaVantage.Fx.Daily("EUR", "USD")
-                .SetOutputSize(OutputSize.Compact)
+            var result = await AlphaVantage.Fx.Weekly("EUR", "USD")
                 .GetAsync();
 
             ServiceMock.LatestParameters[ParameterFields.FromSymbol].ShouldBe("EUR");
             ServiceMock.LatestParameters[ParameterFields.ToSymbol].ShouldBe("USD");
-            ServiceMock.LatestParameters[ParameterFields.Function].ShouldBe(Function.Fx.Daily.Value);
-            ServiceMock.LatestParameters[ParameterFields.OutputSize].ShouldBe(OutputSize.Compact.Value);
+            ServiceMock.LatestParameters[ParameterFields.Function].ShouldBe(Function.Fx.Weekly.Value);
 
-            result.Meta.Count.ShouldBe(6);
+            result.Meta.Count.ShouldBe(5);
             result.Meta["Information"].ShouldBe("Forex Daily Prices (open, high, low, close)");
             result.Meta["From Symbol"].ShouldBe("EUR");
             result.Meta["To Symbol"].ShouldBe("USD");
             result.Meta["Last Refreshed"].ShouldBe("2018-08-22 14:15:00");
-            result.Meta["Output Size"].ShouldBe("Compact");
             result.Meta["Time Zone"].ShouldBe("GMT+8");
 
             result.Data.Length.ShouldBe(101);

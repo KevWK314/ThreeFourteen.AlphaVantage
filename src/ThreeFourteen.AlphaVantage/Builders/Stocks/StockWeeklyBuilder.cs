@@ -7,9 +7,9 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 {
-    public class TimeSeriesDailyAdjustedBuilder : BuilderBase, IHaveData<TimeSeriesAdjustedEntry>, ICanSetOutputSize
+    public class StockWeeklyBuilder : BuilderBase, IHaveData<TimeSeriesEntry>
     {
-        public TimeSeriesDailyAdjustedBuilder(IAlphaVantageService service, string symbol)
+        public StockWeeklyBuilder(IAlphaVantageService service, string symbol)
             : base(service)
         {
             SetField(ParameterFields.Symbol, symbol);
@@ -17,18 +17,18 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 
         protected override string[] RequiredFields => new[] { ParameterFields.Symbol };
 
-        protected override Function Function => Function.Stocks.TimeSeriesDailyAdjusted;
+        protected override Function Function => Function.Stocks.TimeSeriesWeekly;
 
-        public Task<Result<TimeSeriesAdjustedEntry>> GetAsync()
+        public Task<Result<TimeSeriesEntry>> GetAsync()
         {
             return GetDataAsync(Parse);
         }
 
-        private IEnumerable<TimeSeriesAdjustedEntry> Parse(JToken token)
+        private IEnumerable<TimeSeriesEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
             return properties.First.Children()
-                .Select(x => ((JProperty)x).ToTimeSeriesAdjusted())
+                .Select(x => ((JProperty)x).ToTimeSeries())
                 .ToList();
         }
     }

@@ -12,24 +12,24 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
             _getService = getService;
         }
 
-        public IntraDayBuilder IntraDay(string from, string to)
+        public FxIntraDayBuilder IntraDay(string from, string to)
         {
-            return new IntraDayBuilder(_getService(), from, to);
+            return new FxIntraDayBuilder(_getService(), from, to);
         }
 
-        public DailyBuilder Daily(string from, string to)
+        public FxDailyBuilder Daily(string from, string to)
         {
-            return new DailyBuilder(_getService(), from, to);
+            return new FxDailyBuilder(_getService(), from, to);
         }
 
-        public WeeklyBuilder Weekly(string from, string to)
+        public FxWeeklyBuilder Weekly(string from, string to)
         {
-            return new WeeklyBuilder(_getService(), from, to);
+            return new FxWeeklyBuilder(_getService(), from, to);
         }
 
-        public MonthlyBuilder Monthly(string from, string to)
+        public FxMonthlyBuilder Monthly(string from, string to)
         {
-            return new MonthlyBuilder(_getService(), from, to);
+            return new FxMonthlyBuilder(_getService(), from, to);
         }
     }
 }

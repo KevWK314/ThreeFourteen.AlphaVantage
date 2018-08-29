@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,9 +7,9 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 {
-    public class TimeSeriesMonthlyBuilder : BuilderBase, IHaveData<TimeSeriesEntry>
+    public class StockWeeklyAdjustedBuilder : BuilderBase, IHaveData<TimeSeriesAdjustedEntry>
     {
-        public TimeSeriesMonthlyBuilder(IAlphaVantageService service, string symbol)
+        public StockWeeklyAdjustedBuilder(IAlphaVantageService service, string symbol)
             : base(service)
         {
             SetField(ParameterFields.Symbol, symbol);
@@ -18,18 +17,18 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 
         protected override string[] RequiredFields => new[] { ParameterFields.Symbol };
 
-        protected override Function Function => Function.Stocks.TimeSeriesMonthly;
+        protected override Function Function => Function.Stocks.TimeSeriesWeeklyAdjusted;
 
-        public Task<Result<TimeSeriesEntry>> GetAsync()
+        public Task<Result<TimeSeriesAdjustedEntry>> GetAsync()
         {
             return GetDataAsync(Parse);
         }
 
-        private IEnumerable<TimeSeriesEntry> Parse(JToken token)
+        private IEnumerable<TimeSeriesAdjustedEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
             return properties.First.Children()
-                .Select(x => ((JProperty)x).ToTimeSeries())
+                .Select(x => ((JProperty)x).ToTimeSeriesAdjusted())
                 .ToList();
         }
     }

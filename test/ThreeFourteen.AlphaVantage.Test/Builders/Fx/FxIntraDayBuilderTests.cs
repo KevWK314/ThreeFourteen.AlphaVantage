@@ -4,7 +4,7 @@ using Xunit;
 
 namespace ThreeFourteen.AlphaVantage.Test.Builders.Fx
 {
-    public class IntraDayBuilderTests : BuilderTestsBase
+    public class FxIntraDayBuilderTests : BuilderTestsBase
     {
         [Fact]
         public async void Get_ShouldReturnValidData()

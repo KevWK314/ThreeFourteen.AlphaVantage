@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,9 +7,9 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 {
-    public class TimeSeriesMonthlyAdjustedBuilder : BuilderBase, IHaveData<TimeSeriesAdjustedEntry>
+    public class StockMonthlyAdjustedBuilder : BuilderBase, IHaveData<TimeSeriesAdjustedEntry>
     {
-        public TimeSeriesMonthlyAdjustedBuilder(IAlphaVantageService service, string symbol)
+        public StockMonthlyAdjustedBuilder(IAlphaVantageService service, string symbol)
             : base(service)
         {
             SetField(ParameterFields.Symbol, symbol);

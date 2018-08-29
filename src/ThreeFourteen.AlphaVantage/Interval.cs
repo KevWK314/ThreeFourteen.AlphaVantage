@@ -18,23 +18,17 @@
 
         public static readonly Interval Monthly = new Interval("monthly");
 
-        internal static Interval[] All
+        internal static Interval[] All => new[]
         {
-            get
-            {
-                return new[]
-                {
-                    OneMinute,
-                    FiveMinutes,
-                    FifteenMinutes,
-                    ThirtyMinutes,
-                    SixtyMinutes,
-                    Daily,
-                    Weekly,
-                    Monthly
-                };
-            }
-        }
+            OneMinute,
+            FiveMinutes,
+            FifteenMinutes,
+            ThirtyMinutes,
+            SixtyMinutes,
+            Daily,
+            Weekly,
+            Monthly
+        };
 
         private Interval(string value)
         {

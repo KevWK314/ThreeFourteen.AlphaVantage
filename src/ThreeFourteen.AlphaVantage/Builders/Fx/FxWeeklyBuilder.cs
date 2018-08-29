@@ -1,17 +1,15 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ThreeFourteen.AlphaVantage.Response;
 using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Fx
 {
-    public class WeeklyBuilder : BuilderBase, IHaveData<FxEntry>
+    public class FxWeeklyBuilder : BuilderBase, IHaveData<FxEntry>
     {
-        public WeeklyBuilder(IAlphaVantageService service, string from, string to)
+        public FxWeeklyBuilder(IAlphaVantageService service, string from, string to)
             : base(service)
         {
             SetField(ParameterFields.FromSymbol, from);

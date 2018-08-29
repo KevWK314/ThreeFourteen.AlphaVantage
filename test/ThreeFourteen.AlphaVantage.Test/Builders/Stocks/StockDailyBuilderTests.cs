@@ -4,7 +4,7 @@ using Xunit;
 
 namespace ThreeFourteen.AlphaVantage.Test.Builders.Stocks
 {
-    public class TimeSeriesDailyBuilderTests : BuilderTestsBase
+    public class StockDailyBuilderTests : BuilderTestsBase
     {
         [Fact]
         public async void Get_ShouldReturnValidData()

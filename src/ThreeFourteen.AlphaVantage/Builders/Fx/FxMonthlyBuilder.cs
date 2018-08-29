@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,18 +7,9 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Fx
 {
-    public class IntraDayBuilder : BuilderBase, IHaveData<FxEntry>, ICanSetInterval, ICanSetOutputSize
+    public class FxMonthlyBuilder : BuilderBase, IHaveData<FxEntry>
     {
-        private static readonly Interval[] Intervals = new[]
-        {
-            Interval.OneMinute,
-            Interval.FiveMinutes,
-            Interval.FifteenMinutes,
-            Interval.ThirtyMinutes,
-            Interval.SixtyMinutes
-        };
-
-        public IntraDayBuilder(IAlphaVantageService service, string from, string to)
+        public FxMonthlyBuilder(IAlphaVantageService service, string from, string to)
             : base(service)
         {
             SetField(ParameterFields.FromSymbol, from);
@@ -29,11 +19,10 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
         protected override string[] RequiredFields => new[]
         {
             ParameterFields.FromSymbol,
-            ParameterFields.ToSymbol,
-            ParameterFields.Interval
+            ParameterFields.ToSymbol
         };
 
-        protected override Function Function => Function.Fx.IntraDay;
+        protected override Function Function => Function.Fx.Monthly;
 
         public Task<Result<FxEntry>> GetAsync()
         {
@@ -46,11 +35,6 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
             return properties.First.Children()
                 .Select(x => ((JProperty)x).ToFx())
                 .ToList();
-        }
-
-        public Interval[] ValidIntervals()
-        {
-            return Intervals;
         }
     }
 }

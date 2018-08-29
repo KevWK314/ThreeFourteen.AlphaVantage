@@ -10,7 +10,7 @@ namespace ThreeFourteen.AlphaVantage.Builders
             SetField(ParameterFields.Symbol, symbol);
         }
 
-        protected override string[] RequiredFields => new string[] { ParameterFields.Function };
+        protected override string[] RequiredFields => new [] { ParameterFields.Function };
 
         protected override Function Function => null;
 

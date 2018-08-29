@@ -1,17 +1,15 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ThreeFourteen.AlphaVantage.Response;
 using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Fx
 {
-    public class MonthlyBuilder : BuilderBase, IHaveData<FxEntry>
+    public class FxDailyBuilder : BuilderBase, IHaveData<FxEntry>, ICanSetOutputSize
     {
-        public MonthlyBuilder(IAlphaVantageService service, string from, string to)
+        public FxDailyBuilder(IAlphaVantageService service, string from, string to)
             : base(service)
         {
             SetField(ParameterFields.FromSymbol, from);
@@ -24,7 +22,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
             ParameterFields.ToSymbol
         };
 
-        protected override Function Function => Function.Fx.Monthly;
+        protected override Function Function => Function.Fx.Daily;
 
         public Task<Result<FxEntry>> GetAsync()
         {

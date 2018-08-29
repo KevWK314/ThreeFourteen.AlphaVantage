@@ -9,8 +9,8 @@ namespace ThreeFourteen.AlphaVantage
 {
     public class AlphaVantage
     {
-        private AlphaVantageConfig _config;
-        private Lazy<IAlphaVantageService> _service;
+        private readonly AlphaVantageConfig _config;
+        private readonly Lazy<IAlphaVantageService> _service;
 
         public AlphaVantage()
         {
