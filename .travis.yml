@@ -6,6 +6,8 @@ script:
   - dotnet build ./ThreeFourteen.AlphaVantage.sln
   - dotnet test ./test/ThreeFourteen.AlphaVantage.Test
 deploy:
+  provider: releases
+  skip_cleanup: true
   on:
     tags: true
   scripts: 
