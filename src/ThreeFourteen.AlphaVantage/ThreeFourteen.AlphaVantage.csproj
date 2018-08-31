@@ -2,6 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+
+	<packageId>ThreeFourteen.AlphaVantage</packageId>
+	<description>A library to consume the AlphaVantage Market Data API</description>
+	<title>AlphaVantage library</title>
+	<authors>kevwk314</authors>
+	<packageLicenseUrl>https://opensource.org/licenses/MIT</packageLicenseUrl>
+	<packageProjectUrl>https://github.com/KevWK314/ThreeFourteen.AlphaVantage</packageProjectUrl>
+	<packageIconUrl>https://github.com/KevWK314/ThreeFourteen.AlphaVantage/blob/master/res/Alpha314.png</packageIconUrl>
+	<packageRequireLicenseAcceptance>false</packageRequireLicenseAcceptance>
+	<packageTags>alpha vantage alphavantage marketdata</packageTags>
   </PropertyGroup>
 
   <ItemGroup>
