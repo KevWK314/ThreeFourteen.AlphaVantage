@@ -5,3 +5,9 @@ script:
   - dotnet restore
   - dotnet build ./ThreeFourteen.AlphaVantage.sln
   - dotnet test ./test/ThreeFourteen.AlphaVantage.Test
+deploy:
+  on:
+    tags: true
+  scripts: 
+    - dotnet pack src\ThreeFourteen.AlphaVantage -c Release /p:Version=$TRAVIS_TAG
+    
