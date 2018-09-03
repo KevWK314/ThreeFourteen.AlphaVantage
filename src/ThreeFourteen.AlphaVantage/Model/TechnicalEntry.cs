@@ -2,7 +2,7 @@
 
 namespace ThreeFourteen.AlphaVantage.Model
 {
-    public class Technical
+    public class TechnicalEntry
     {
         public DateTime Timestamp { get; internal set; }
 

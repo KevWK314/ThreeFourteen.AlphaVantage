@@ -54,10 +54,10 @@ namespace ThreeFourteen.AlphaVantage.Response
             return entry;
         }
 
-        public static Technical ToTechnical(this JProperty token, string valueKey)
+        public static TechnicalEntry ToTechnical(this JProperty token, string valueKey)
         {
             var date = Formats.ParseDateTime(token.Name);
-            var entry = new Technical
+            var entry = new TechnicalEntry
             {
                 Timestamp = date,
                 Value = token.First.Value<double>(valueKey),
