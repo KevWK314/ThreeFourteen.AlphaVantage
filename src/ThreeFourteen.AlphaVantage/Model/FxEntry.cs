@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ThreeFourteen.AlphaVantage.Response
+namespace ThreeFourteen.AlphaVantage.Model
 {
     public class FxEntry
     {

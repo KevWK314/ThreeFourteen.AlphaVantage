@@ -21,6 +21,11 @@
             public static readonly Function Monthly = new Function("FX_MONTHLY");
         }
 
+        public static class Technicals
+        {
+            public static readonly Function SimpleMovingAverave = new Function("SMA");
+        }
+
         private Function(string value)
         {
             Value = value;

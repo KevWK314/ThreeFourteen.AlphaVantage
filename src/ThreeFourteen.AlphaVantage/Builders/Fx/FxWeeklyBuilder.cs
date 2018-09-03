@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ThreeFourteen.AlphaVantage.Model;
 using ThreeFourteen.AlphaVantage.Response;
 using ThreeFourteen.AlphaVantage.Service;
 

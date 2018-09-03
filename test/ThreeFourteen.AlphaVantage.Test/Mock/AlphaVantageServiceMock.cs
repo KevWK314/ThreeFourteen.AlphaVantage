@@ -25,6 +25,8 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
             { "FX_DAILY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.Daily.json" },
             { "FX_WEEKLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.Weekly.json" },
             { "FX_MONTHLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.Monthly.json" },
+            // Technicals
+            { "SMA", "ThreeFourteen.AlphaVantage.Test.ExampleData.Technicals.SimpleMovingAverage.json" },
             // Other
             { "ERROR", "ThreeFourteen.AlphaVantage.Test.ExampleData.Error.json" }
         };

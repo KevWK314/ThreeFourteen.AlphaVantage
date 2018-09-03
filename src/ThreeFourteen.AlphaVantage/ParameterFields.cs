@@ -8,5 +8,7 @@
         public const string OutputSize = "outputsize";
         public const string FromSymbol = "from_symbol";
         public const string ToSymbol = "to_symbol";
+        public const string TimePeriod = "time_period";
+        public const string SeriesType = "series_type";
     }
 }
