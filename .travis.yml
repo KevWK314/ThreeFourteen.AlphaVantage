@@ -10,3 +10,4 @@ deploy:
   skip_cleanup: true
   script: 
     - dotnet pack ./src/ThreeFourteen.AlphaVantage -c Release /p:Version=$MY_VERSION
+    - dotnet nuget push ./src/ThreeFourteen.AlphaVantage/bin/Release/ThreeFourteen.AlphaVantage.$MY_VERSION.nupkg -k $NUGET_API_KEY
