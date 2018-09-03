@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using ThreeFourteen.AlphaVantage.Model;
 
 namespace ThreeFourteen.AlphaVantage.Response
 {
@@ -52,5 +53,17 @@ namespace ThreeFourteen.AlphaVantage.Response
 
             return entry;
         }
+
+        public static Technical ToTechnical(this JProperty token, string valueKey)
+        {
+            var date = Formats.ParseDateTime(token.Name);
+            var entry = new Technical
+            {
+                Timestamp = date,
+                Value = token.First.Value<double>(valueKey),
+            };
+
+            return entry;
+        }     
     }
 }
