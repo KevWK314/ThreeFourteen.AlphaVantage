@@ -10,7 +10,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders
         [Fact]
         public void Get_WhenError_ShouldThrowValidException()
         {
-            Func<Task<string>> get = () => AlphaVantage.Custom("MSFT")
+            Func<Task<string>> get = () => AlphaVantage.Custom()
                 .Set("function", "ERROR")
                 .Set("interval", "60min")
                 .Set("outputsize", "compact")

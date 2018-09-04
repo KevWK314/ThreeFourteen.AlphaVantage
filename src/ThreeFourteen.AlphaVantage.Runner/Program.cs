@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace ThreeFourteen.AlphaVantage.Runner
 {
@@ -6,32 +7,39 @@ namespace ThreeFourteen.AlphaVantage.Runner
     {
         static void Main(string[] args)
         {
-            var key = Environment.GetEnvironmentVariable("AlphaVantageApiKey", EnvironmentVariableTarget.User);
-            var alphaVantage = new AlphaVantage();
+            var apiKey = Environment.GetEnvironmentVariable("AlphaVantageApiKey", EnvironmentVariableTarget.User);
 
-            //var data = AlphaVantage.Custom("MSFT")
-            //    .Set("function", "TIME_SERIES_INTRADAY")
-            //    .Set("interval", "60min")
-            //    .Set("outputsize", "compact")
-            //    .Set("apikey", "")
-            //    .GetRawDataAsync().Result;
-
-            //Console.WriteLine(data);
-
-
-            alphaVantage.Configure(x => x.ApiKey = key);
-
-            //var timeseries = alphaVantage.TimeSeriesIntraDay("MSFT")
-            //    .SetInterval(Interval.SixtyMinutes)
-            //    .SetOutputSize(OutputSize.Full)
-            //    .GetAsync().Result;
-
-            var timeseries = alphaVantage.Stocks.TimeSeriesWeeklyAdjusted("MSFT")
-                .GetAsync().Result;
-
-            Console.WriteLine(timeseries.Meta["Information"]);        
+            TryItOut(apiKey).Wait();
 
             Console.ReadKey();
+        }
+
+        private static async Task TryItOut(string apiKey)
+        {
+            var alphaVantage = new AlphaVantage(apiKey);
+
+            var customData = await alphaVantage.Custom()
+                .Set("symbol", "MSFT")
+                .Set("function", "TIME_SERIES_INTRADAY")
+                .Set("interval", "60min")
+                .Set("outputsize", "compact")
+                .Set("apikey", "")
+                .GetRawDataAsync();
+
+            var fxData = await alphaVantage.Fx.IntraDay("EUR", "USD")
+                .SetInterval(Interval.Daily)
+                .SetOutputSize(OutputSize.Compact)
+                .GetAsync();
+
+            var stockData = await alphaVantage.Stocks.Daily("MSFT")
+                .SetOutputSize(OutputSize.Compact)
+                .GetAsync();
+
+            var technicalData = await alphaVantage.Technicals.SimpleMovingAverage("MSFT")
+                .SetInterval(Interval.Daily)
+                .SetTimePeriod(200)
+                .SetSeriesType(SeriesType.Close)
+                .GetAsync();
         }
     }
 }

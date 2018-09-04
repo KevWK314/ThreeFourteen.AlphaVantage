@@ -9,7 +9,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders.Stocks
         [Fact]
         public async void Get_ShouldReturnValidData()
         {
-            var timeseries = await AlphaVantage.Stocks.TimeSeriesIntraDay("MSFT")
+            var timeseries = await AlphaVantage.Stocks.IntraDay("MSFT")
                 .SetInterval(Interval.FiveMinutes)
                 .SetOutputSize(OutputSize.Compact)
                 .GetAsync();

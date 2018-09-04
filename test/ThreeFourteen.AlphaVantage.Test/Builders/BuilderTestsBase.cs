@@ -7,7 +7,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders
         protected BuilderTestsBase()
         {
             ServiceMock = new AlphaVantageServiceMock();
-            AlphaVantage = new AlphaVantage();
+            AlphaVantage = new AlphaVantage("apiKey");
             AlphaVantage.Configure(x => x.Service = ServiceMock);
         }
 

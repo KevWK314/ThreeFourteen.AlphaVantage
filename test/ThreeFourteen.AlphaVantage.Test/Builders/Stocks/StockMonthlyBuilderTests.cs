@@ -9,7 +9,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders.Stocks
         [Fact]
         public async void Get_ShouldReturnValidData()
         {
-            var timeseries = await AlphaVantage.Stocks.TimeSeriesMonthly("MSFT")
+            var timeseries = await AlphaVantage.Stocks.Monthly("MSFT")
                 .GetAsync();
 
             ServiceMock.LatestParameters[ParameterFields.Symbol].ShouldBe("MSFT");

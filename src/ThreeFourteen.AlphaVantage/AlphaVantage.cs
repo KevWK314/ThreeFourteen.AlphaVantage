@@ -13,9 +13,9 @@ namespace ThreeFourteen.AlphaVantage
         private readonly AlphaVantageConfig _config;
         private readonly Lazy<IAlphaVantageService> _service;
 
-        public AlphaVantage()
+        public AlphaVantage(string apiKey)
         {
-            _config = new AlphaVantageConfig();
+            _config = new AlphaVantageConfig { ApiKey = apiKey };
             _service = new Lazy<IAlphaVantageService>(() => _config.Service ?? new AlphaVantageService(_config));
 
             Stocks = new StockBuilders(() => _service.Value);
@@ -29,9 +29,9 @@ namespace ThreeFourteen.AlphaVantage
 
         public TechnicalBuilders Technicals { get; }
 
-        public CustomBuilder Custom(string symbol)
+        public CustomBuilder Custom()
         {
-            return new CustomBuilder(_service.Value, symbol);
+            return new CustomBuilder(_service.Value);
         }
 
         public void Configure(Action<AlphaVantageConfig> configureAction)

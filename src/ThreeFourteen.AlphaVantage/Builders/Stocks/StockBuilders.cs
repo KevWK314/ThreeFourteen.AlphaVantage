@@ -12,40 +12,39 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
             _getService = getService;
         }
 
-        public StockIntraDayBuilder TimeSeriesIntraDay(string symbol)
+        public StockIntraDayBuilder IntraDay(string symbol)
         {
             return new StockIntraDayBuilder(_getService(), symbol);
         }
 
-        public StockDailyBuilder TimeSeriesDaily(string symbol)
+        public StockDailyBuilder Daily(string symbol)
         {
             return new StockDailyBuilder(_getService(), symbol);
         }
 
-        public StockDailyAdjustedBuilder TimeSeriesDailyAdjusted(string symbol)
+        public StockDailyAdjustedBuilder DailyAdjusted(string symbol)
         {
             return new StockDailyAdjustedBuilder(_getService(), symbol);
         }
 
-        public StockWeeklyBuilder TimeSeriesWeekly(string symbol)
+        public StockWeeklyBuilder Weekly(string symbol)
         {
             return new StockWeeklyBuilder(_getService(), symbol);
         }
 
-        public StockWeeklyAdjustedBuilder TimeSeriesWeeklyAdjusted(string symbol)
+        public StockWeeklyAdjustedBuilder WeeklyAdjusted(string symbol)
         {
             return new StockWeeklyAdjustedBuilder(_getService(), symbol);
         }
 
-        public StockMonthlyBuilder TimeSeriesMonthly(string symbol)
+        public StockMonthlyBuilder Monthly(string symbol)
         {
             return new StockMonthlyBuilder(_getService(), symbol);
         }
 
-        public StockMonthlyAdjustedBuilder TimeSeriesMonthlyAdjusted(string symbol)
+        public StockMonthlyAdjustedBuilder MonthlyAdjusted(string symbol)
         {
             return new StockMonthlyAdjustedBuilder(_getService(), symbol);
         }
-
     }
 }
