@@ -21,5 +21,35 @@ namespace ThreeFourteen.AlphaVantage.Builders.Technicals
         {
             return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.RelativeStrengthIndex);
         }
+
+        public BasicTechnicalBuilder ExponentialMovingAverage(string symbol)
+        {
+            return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.ExponentialMovingAverage);
+        }
+
+        public BasicTechnicalBuilder WeightedMovingAverage(string symbol)
+        {
+            return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.WeightedMovingAverage);
+        }
+
+        public BasicTechnicalBuilder DoubleExponentialMovingAverage(string symbol)
+        {
+            return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.DoubleExponentialMovingAverage);
+        }
+
+        public BasicTechnicalBuilder TripleExponentialMovingAverage(string symbol)
+        {
+            return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.TripleExponentialMovingAverage);
+        }
+
+        public BasicTechnicalBuilder TriangularExponentialMovingAverage(string symbol)
+        {
+            return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.TriangularExponentialMovingAverage);
+        }
+
+        public BasicTechnicalBuilder KaufmanAdaptiveMovingAverage(string symbol)
+        {
+            return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.KaufmanAdaptiveMovingAverage);
+        }
     }
 }

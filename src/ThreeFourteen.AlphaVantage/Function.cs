@@ -25,6 +25,12 @@
         {
             public static readonly Function SimpleMovingAverave = new Function("SMA");
             public static readonly Function RelativeStrengthIndex = new Function("RSI");
+            public static readonly Function ExponentialMovingAverage = new Function("EMA");
+            public static readonly Function WeightedMovingAverage = new Function("WMA");
+            public static readonly Function DoubleExponentialMovingAverage = new Function("DEMA");
+            public static readonly Function TripleExponentialMovingAverage = new Function("TEMA");
+            public static readonly Function TriangularExponentialMovingAverage = new Function("TRIMA");
+            public static readonly Function KaufmanAdaptiveMovingAverage = new Function("KAMA");
         }
 
         private Function(string value)
