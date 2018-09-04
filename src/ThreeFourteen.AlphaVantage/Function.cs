@@ -31,6 +31,8 @@
             public static readonly Function TripleExponentialMovingAverage = new Function("TEMA");
             public static readonly Function TriangularExponentialMovingAverage = new Function("TRIMA");
             public static readonly Function KaufmanAdaptiveMovingAverage = new Function("KAMA");
+            public static readonly Function AverageDirectionalMovementIndex = new Function("ADX");
+            public static readonly Function CommodityChannelIndex = new Function("CCI");
         }
 
         private Function(string value)

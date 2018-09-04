@@ -51,5 +51,15 @@ namespace ThreeFourteen.AlphaVantage.Builders.Technicals
         {
             return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.KaufmanAdaptiveMovingAverage);
         }
+
+        public BasicTechnicalBuilder AverageDirectionalMovementIndex(string symbol)
+        {
+            return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.AverageDirectionalMovementIndex);
+        }
+
+        public BasicTechnicalBuilder CommodityChannelIndex(string symbol)
+        {
+            return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.CommodityChannelIndex);
+        }
     }
 }
