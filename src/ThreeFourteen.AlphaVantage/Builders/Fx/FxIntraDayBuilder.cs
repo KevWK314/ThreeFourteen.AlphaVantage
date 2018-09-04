@@ -35,6 +35,8 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
 
         protected override Function Function => Function.Fx.IntraDay;
 
+        public Interval[] ValidIntervals => Intervals;
+
         public Task<Result<FxEntry>> GetAsync()
         {
             return GetDataAsync(Parse);
@@ -46,11 +48,6 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
             return properties.First.Children()
                 .Select(x => ((JProperty)x).ToFx())
                 .ToList();
-        }
-
-        public Interval[] ValidIntervals()
-        {
-            return Intervals;
         }
     }
 }

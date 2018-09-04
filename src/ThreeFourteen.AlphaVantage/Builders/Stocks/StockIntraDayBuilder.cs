@@ -33,10 +33,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 
         protected override Function Function => Function.Stocks.TimeSeriesIntraDay;
 
-        public Interval[] ValidIntervals()
-        {
-            return Intervals;
-        }
+        public Interval[] ValidIntervals => Intervals;
 
         public Task<Result<TimeSeriesEntry>> GetAsync()
         {

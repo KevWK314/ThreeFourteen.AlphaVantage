@@ -2,6 +2,6 @@
 {
     public interface ICanSetInterval
     {
-        Interval[] ValidIntervals();
+        Interval[] ValidIntervals { get; }
     }
 }

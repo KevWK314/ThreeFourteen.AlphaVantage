@@ -11,7 +11,7 @@ namespace ThreeFourteen.AlphaVantage
         {
             if (interval == null) throw new ArgumentNullException(nameof(interval));
 
-            if (!builder.ValidIntervals().Contains(interval))
+            if (!builder.ValidIntervals.Contains(interval))
             {
                 throw new InvalidOperationException($"Interval {interval.Value} not supported");
             }

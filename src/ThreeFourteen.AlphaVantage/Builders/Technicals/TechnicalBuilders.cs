@@ -12,9 +12,14 @@ namespace ThreeFourteen.AlphaVantage.Builders.Technicals
             _getService = getService;
         }
 
-        public SimpleMovingAverageBuilder SimpleMovingAverage(string symbol)
+        public BasicTechnicalBuilder SimpleMovingAverage(string symbol)
         {
-            return new SimpleMovingAverageBuilder(_getService(), symbol);
+            return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.SimpleMovingAverave);
+        }
+
+        public BasicTechnicalBuilder RelativeStrengthIndex(string symbol)
+        {
+            return new BasicTechnicalBuilder(_getService(), symbol, Function.Technicals.RelativeStrengthIndex);
         }
     }
 }

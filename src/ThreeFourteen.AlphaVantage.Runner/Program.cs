@@ -18,16 +18,8 @@ namespace ThreeFourteen.AlphaVantage.Runner
         {
             var alphaVantage = new AlphaVantage(apiKey);
 
-            var customData = await alphaVantage.Custom()
-                .Set("symbol", "MSFT")
-                .Set("function", "TIME_SERIES_INTRADAY")
-                .Set("interval", "60min")
-                .Set("outputsize", "compact")
-                .Set("apikey", "")
-                .GetRawDataAsync();
-
             var fxData = await alphaVantage.Fx.IntraDay("EUR", "USD")
-                .SetInterval(Interval.Daily)
+                .SetInterval(Interval.FifteenMinutes)
                 .SetOutputSize(OutputSize.Compact)
                 .GetAsync();
 
@@ -40,6 +32,13 @@ namespace ThreeFourteen.AlphaVantage.Runner
                 .SetTimePeriod(200)
                 .SetSeriesType(SeriesType.Close)
                 .GetAsync();
+
+            var customData = await alphaVantage.Custom()
+                .Set("symbol", "MSFT")
+                .Set("function", "TIME_SERIES_INTRADAY")
+                .Set("interval", "60min")
+                .Set("outputsize", "compact")
+                .GetRawDataAsync();
         }
     }
 }

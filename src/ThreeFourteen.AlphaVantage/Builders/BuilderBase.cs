@@ -20,11 +20,6 @@ namespace ThreeFourteen.AlphaVantage.Builders
         protected BuilderBase(IAlphaVantageService service)
         {
             _service = service;
-
-            if (Function != null)
-            {
-                SetField(ParameterFields.Function, Function.Value);
-            }
         }
 
         internal void SetField(string key, string value)
@@ -37,6 +32,11 @@ namespace ThreeFourteen.AlphaVantage.Builders
 
         public Task<string> GetRawDataAsync()
         {
+            if (Function != null)
+            {
+                SetField(ParameterFields.Function, Function.Value);
+            }
+
             var required = new HashSet<string>(RequiredFields);
             required.RemoveWhere(x => _fields.ContainsKey(x));
             if (required.Count > 0)

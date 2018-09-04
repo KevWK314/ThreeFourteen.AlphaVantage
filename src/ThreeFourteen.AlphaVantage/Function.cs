@@ -24,6 +24,7 @@
         public static class Technicals
         {
             public static readonly Function SimpleMovingAverave = new Function("SMA");
+            public static readonly Function RelativeStrengthIndex = new Function("RSI");
         }
 
         private Function(string value)

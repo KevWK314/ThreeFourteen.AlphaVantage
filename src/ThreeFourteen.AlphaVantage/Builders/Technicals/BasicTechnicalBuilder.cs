@@ -8,34 +8,21 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Technicals
 {
-    public class SimpleMovingAverageBuilder : BuilderBase, IHaveData<TechnicalEntry>, ICanSetInterval, ICanSetTimePeriod, ICanSetSeriesType
+    public class BasicTechnicalBuilder : BuilderBase, IHaveData<TechnicalEntry>, ICanSetInterval, ICanSetTimePeriod, ICanSetSeriesType
     {
-        private static readonly Interval[] Intervals =
-            {
-                Interval.OneMinute,
-                Interval.FiveMinutes,
-                Interval.FifteenMinutes,
-                Interval.ThirtyMinutes,
-                Interval.SixtyMinutes,
-                Interval.Daily,
-                Interval.Weekly,
-                Interval.Monthly
-            };
-
-        internal SimpleMovingAverageBuilder(IAlphaVantageService service, string symbol)
+        internal BasicTechnicalBuilder(IAlphaVantageService service, string symbol, Function function)
             : base(service)
         {
             SetField(ParameterFields.Symbol, symbol);
+
+            Function = function;
         }
 
         protected override string[] RequiredFields => new[] { ParameterFields.Interval, ParameterFields.TimePeriod };
 
-        protected override Function Function => Function.Technicals.SimpleMovingAverave;
+        protected override Function Function { get; }
 
-        public Interval[] ValidIntervals()
-        {
-            return Intervals;
-        }
+        public Interval[] ValidIntervals => Interval.All;
 
         public Task<Result<TechnicalEntry>> GetAsync()
         {
@@ -46,7 +33,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Technicals
         {
             var properties = token as JProperty;
             return properties.First.Children()
-                .Select(x => ((JProperty)x).ToTechnical("SMA"))
+                .Select(x => ((JProperty)x).ToTechnical(Function.Value))
                 .ToList();
         }
     }
