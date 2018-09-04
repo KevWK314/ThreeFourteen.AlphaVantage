@@ -14,20 +14,28 @@ You can install by using the Visual Studio Nuget Package Manager (search ThreeFo
 ## Using ThreeFourteen.AlphaVantage
 Once you've added a reference to the package, it's very simple to use. Everything is strongly typed so there should be little to no guess work. The only caveat is the building a custom request (which will allow you to set whatever parameters you want but you will have to parse the result yourself).
 
-As an example here is how to access daily intra-day FX data for EUR/USD:
+Here are some examples for Fx, Stock and Technicals.
 
 ```c#
-var alphaVantage = new AlphaVantage();
+  var alphaVantage = new AlphaVantage(apiKey);
 
-alphaVantage.Configure(x => x.ApiKey = key);
+  var fxData = await alphaVantage.Fx.IntraDay("EUR", "USD")
+      .SetInterval(Interval.Daily)
+      .SetOutputSize(OutputSize.Compact)
+      .GetAsync();
 
-var data = await alphaVantage.Fx.IntraDay("EUR", "USD")
-    .SetInterval(Interval.Daily)
-    .SetOutputSize(OutputSize.Compact)
-    .GetAsync();
+  var stockData = await alphaVantage.Stocks.Daily("MSFT")
+      .SetOutputSize(OutputSize.Compact)
+      .GetAsync();
+
+  var technicalData = await alphaVantage.Technicals.SimpleMovingAverage("MSFT")
+      .SetInterval(Interval.Daily)
+      .SetTimePeriod(200)
+      .SetSeriesType(SeriesType.Close)
+      .GetAsync();
 ```
 
-Easy peasy. There is an equivalent Stock and Technical property on the AlphaVantage class that will give you access to whatever call you want to make. As mentioned previously, it's typed and intellisense is your friend. 
+Easy peasy. As mentioned previously, it's typed so intellisense is your friend. 
 
 ### Custom Request
 
