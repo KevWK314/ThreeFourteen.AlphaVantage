@@ -18,14 +18,14 @@ namespace ThreeFourteen.AlphaVantage.Runner
         {
             var alphaVantage = new AlphaVantage(apiKey);
 
-            var fxData = await alphaVantage.Fx.IntraDay("EUR", "USD")
-                .SetInterval(Interval.FifteenMinutes)
-                .SetOutputSize(OutputSize.Compact)
-                .GetAsync();
+            //var fxData = await alphaVantage.Fx.IntraDay("EUR", "USD")
+            //    .SetInterval(Interval.FifteenMinutes)
+            //    .SetOutputSize(OutputSize.Compact)
+            //    .GetAsync();
 
-            var stockData = await alphaVantage.Stocks.Daily("MSFT")
-                .SetOutputSize(OutputSize.Compact)
-                .GetAsync();
+            //var stockData = await alphaVantage.Stocks.Daily("MSFT")
+            //    .SetOutputSize(OutputSize.Compact)
+            //    .GetAsync();
 
             var cryptoData = await alphaVantage.Cryptos.Daily("BTC", "GBP")
                 .GetAsync();

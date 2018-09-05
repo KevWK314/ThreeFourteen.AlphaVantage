@@ -13,6 +13,7 @@
     <None Remove="ExampleData\Fx\IntraDay.json" />
     <None Remove="ExampleData\Fx\Monthly.json" />
     <None Remove="ExampleData\Fx\Weekly.json" />
+    <None Remove="ExampleData\PremiumMessage.json" />
     <None Remove="ExampleData\Technicals\RelativeStrengthIndex.json" />
     <None Remove="ExampleData\Technicals\SimpleMovingAverage.json" />
     <None Remove="ExampleData\TimeSeriesDaily.json" />
@@ -39,6 +40,7 @@
     <EmbeddedResource Include="ExampleData\Fx\IntraDay.json" />
     <EmbeddedResource Include="ExampleData\Fx\Monthly.json" />
     <EmbeddedResource Include="ExampleData\Fx\Weekly.json" />
+    <EmbeddedResource Include="ExampleData\PremiumMessage.json" />
     <EmbeddedResource Include="ExampleData\Stocks\TimeSeriesDaily.json" />
     <EmbeddedResource Include="ExampleData\Stocks\TimeSeriesDailyAdjusted.json" />
     <EmbeddedResource Include="ExampleData\Stocks\TimeSeriesIntraDay.json" />

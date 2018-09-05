@@ -55,20 +55,26 @@ namespace ThreeFourteen.AlphaVantage.Builders
             var errorNode = (node as JObject)?.Properties()?.FirstOrDefault(x => x.Name == "Error Message");
             if (errorNode != null)
             {
-                throw new InvalidOperationException(errorNode.Value.Value<string>());
+                throw new AlphaVantageException(errorNode.Value.Value<string>());
+            }
+
+            var informationNode = (node as JObject)?.Properties()?.FirstOrDefault(x => x.Name == "Information");
+            if (informationNode != null)
+            {
+                throw new AlphaVantageException(informationNode.Value.Value<string>());
             }
 
             var metadataNode = node.Root["Meta Data"];
             if (metadataNode == null)
             {
-                throw new InvalidOperationException("Result does not seem to be valid (missing Meta Data)");
+                throw new AlphaVantageException("Result does not seem to be valid");
             }
             var metadata = ParseMetaData(metadataNode);
 
             var dataNode = node.Root.Skip(1).FirstOrDefault();
             if (dataNode == null)
             {
-                throw new InvalidOperationException("Result does not seem to be valid (missing Data)");
+                throw new AlphaVantageException("Result does not seem to be valid (missing Data)");
             }
             var data = parseData(dataNode).ToArray();
 

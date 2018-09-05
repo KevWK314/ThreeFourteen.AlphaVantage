@@ -8,6 +8,8 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
 {
     public class AlphaVantageServiceMock : IAlphaVantageService
     {
+        private string _forcedResponseKey;
+
         public IDictionary<string, string> LatestParameters { get; private set; }
 
         private static readonly Dictionary<string, string> FileLookup = new Dictionary<string, string>
@@ -32,16 +34,22 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
             { "RSI", "ThreeFourteen.AlphaVantage.Test.ExampleData.Technicals.RelativeStrengthIndex.json" },
             
             // Other
-            { "ERROR", "ThreeFourteen.AlphaVantage.Test.ExampleData.Error.json" }
+            { "ERROR", "ThreeFourteen.AlphaVantage.Test.ExampleData.Error.json" },
+            { "PREMIUM", "ThreeFourteen.AlphaVantage.Test.ExampleData.PremiumMessage.json" }
         };
 
         public Task<string> GetRawDataAsync(IDictionary<string, string> parameters)
         {
             LatestParameters = parameters;
 
-            string file = FileLookup[parameters[ParameterFields.Function]];
+            string file = FileLookup[_forcedResponseKey ?? parameters[ParameterFields.Function]];
 
             return LoadExampleData(file);
+        }
+
+        public void ForceResponse(string responseKey)
+        {
+            _forcedResponseKey = responseKey;
         }
 
         private async Task<string> LoadExampleData(string fileName)
