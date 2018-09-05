@@ -27,6 +27,9 @@ namespace ThreeFourteen.AlphaVantage.Runner
                 .SetOutputSize(OutputSize.Compact)
                 .GetAsync();
 
+            var cryptoData = await alphaVantage.Cryptos.Daily("BTC", "GBP")
+                .GetAsync();
+
             var technicalData = await alphaVantage.Technicals.SimpleMovingAverage("MSFT")
                 .SetInterval(Interval.Daily)
                 .SetTimePeriod(200)
