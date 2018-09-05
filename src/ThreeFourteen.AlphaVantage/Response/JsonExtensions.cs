@@ -54,6 +54,27 @@ namespace ThreeFourteen.AlphaVantage.Response
             return entry;
         }
 
+        public static CryptoEntry ToCrypto(this JProperty token, string market)
+        {
+            var date = Formats.ParseDateTime(token.Name);
+            var entry = new CryptoEntry
+            {
+                Timestamp = date,
+                Open = token.First.Value<double>($"1a. open ({market})"),
+                High = token.First.Value<double>($"2a. high ({market})"),
+                Low = token.First.Value<double>($"3a. low ({market})"),
+                Close = token.First.Value<double>($"4a. close ({market})"),
+                OpenUsd = token.First.Value<double>("1b. open (USD)"),
+                HighUsd = token.First.Value<double>("2b. high (USD)"),
+                LowUsd = token.First.Value<double>("3b. low (USD)"),
+                CloseUsd = token.First.Value<double>("4b. close (USD)"),
+                Volume = token.First.Value<double>("5. volume"),
+                MarketCapUsd = token.First.Value<double>("6. market cap (USD)")
+            };
+
+            return entry;
+        }
+
         public static TechnicalEntry ToTechnical(this JProperty token, string valueKey)
         {
             var date = Formats.ParseDateTime(token.Name);
@@ -64,6 +85,6 @@ namespace ThreeFourteen.AlphaVantage.Response
             };
 
             return entry;
-        }     
+        }
     }
 }

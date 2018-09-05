@@ -4,6 +4,7 @@
     {
         public const string Function = "function";
         public const string Symbol = "symbol";
+        public const string Market = "market";
         public const string Interval = "interval";
         public const string OutputSize = "outputsize";
         public const string FromSymbol = "from_symbol";

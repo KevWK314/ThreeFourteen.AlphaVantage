@@ -21,6 +21,13 @@
             public static readonly Function Monthly = new Function("FX_MONTHLY");
         }
 
+        public static class Crypto
+        {
+            public static readonly Function Daily = new Function("DIGITAL_CURRENCY_DAILY");
+            public static readonly Function Weekly = new Function("DIGITAL_CURRENCY_WEEKLY");
+            public static readonly Function Monthly = new Function("DIGITAL_CURRENCY_MONTHLY");
+        }
+
         public static class Technicals
         {
             public static readonly Function SimpleMovingAverave = new Function("SMA");

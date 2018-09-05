@@ -7,7 +7,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
     {
         private readonly Func<IAlphaVantageService> _getService;
 
-        public FxBuilders(Func<IAlphaVantageService> getService)
+        internal FxBuilders(Func<IAlphaVantageService> getService)
         {
             _getService = getService;
         }

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ExampleData\Cryptos\Daily.json" />
     <None Remove="ExampleData\Error.json" />
     <None Remove="ExampleData\Fx\Daily.json" />
     <None Remove="ExampleData\Fx\IntraDay.json" />
@@ -32,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="ExampleData\Cryptos\Daily.json" />
     <EmbeddedResource Include="ExampleData\Error.json" />
     <EmbeddedResource Include="ExampleData\Fx\Daily.json" />
     <EmbeddedResource Include="ExampleData\Fx\IntraDay.json" />
