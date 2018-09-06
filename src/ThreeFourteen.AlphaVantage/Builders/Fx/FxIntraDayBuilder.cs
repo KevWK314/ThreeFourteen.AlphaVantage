@@ -8,7 +8,7 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Fx
 {
-    public class FxIntraDayBuilder : BuilderBase, IHaveData<FxEntry>, ICanSetInterval, ICanSetOutputSize
+    public class FxIntraDayBuilder : BuilderBase, IHaveData<FxEntry[]>, ICanSetInterval, ICanSetOutputSize
     {
         private static readonly Interval[] Intervals = new[]
         {
@@ -37,9 +37,9 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
 
         public Interval[] ValidIntervals => Intervals;
 
-        public Task<Result<FxEntry>> GetAsync()
+        public Task<Result<FxEntry[]>> GetAsync()
         {
-            return GetDataAsync(Parse);
+            return GetSeriesDataAsync(Parse);
         }
 
         private IEnumerable<FxEntry> Parse(JToken token)

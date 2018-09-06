@@ -8,7 +8,7 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 {
-    public class StockIntraDayBuilder : BuilderBase, IHaveData<TimeSeriesEntry>, ICanSetInterval, ICanSetOutputSize
+    public class StockIntraDayBuilder : BuilderBase, IHaveData<TimeSeriesEntry[]>, ICanSetInterval, ICanSetOutputSize
     {
         private static readonly Interval[] Intervals =
             {
@@ -35,9 +35,9 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 
         public Interval[] ValidIntervals => Intervals;
 
-        public Task<Result<TimeSeriesEntry>> GetAsync()
+        public Task<Result<TimeSeriesEntry[]>> GetAsync()
         {
-            return GetDataAsync(Parse);
+            return GetSeriesDataAsync(Parse);
         }
 
         private IEnumerable<TimeSeriesEntry> Parse(JToken token)

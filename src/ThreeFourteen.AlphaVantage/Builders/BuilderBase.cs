@@ -47,22 +47,12 @@ namespace ThreeFourteen.AlphaVantage.Builders
             return _service.GetRawDataAsync(_fields);
         }
 
-        protected virtual async Task<Result<T>> GetDataAsync<T>(Func<JToken, IEnumerable<T>> parseData)
+        protected virtual async Task<Result<T[]>> GetSeriesDataAsync<T>(Func<JToken, IEnumerable<T>> parseData)
         {
             var res = await GetRawDataAsync();
             JToken node = JToken.Parse(res);
 
-            var errorNode = (node as JObject)?.Properties()?.FirstOrDefault(x => x.Name == "Error Message");
-            if (errorNode != null)
-            {
-                throw new AlphaVantageException(errorNode.Value.Value<string>());
-            }
-
-            var informationNode = (node as JObject)?.Properties()?.FirstOrDefault(x => x.Name == "Information");
-            if (informationNode != null)
-            {
-                throw new AlphaVantageException(informationNode.Value.Value<string>());
-            }
+            ValidateResponse(node as JObject);
 
             var metadataNode = node.Root["Meta Data"];
             if (metadataNode == null)
@@ -78,7 +68,27 @@ namespace ThreeFourteen.AlphaVantage.Builders
             }
             var data = parseData(dataNode).ToArray();
 
-            return new Result<T>(metadata, data);
+            return new Result<T[]>(metadata, data);
+        }
+
+        protected void ValidateResponse(JObject node)
+        {
+            if (node == null)
+            {
+                throw new AlphaVantageException("Invalid response");
+            }
+
+            var errorNode = node?.Properties()?.FirstOrDefault(x => x.Name == "Error Message");
+            if (errorNode != null)
+            {
+                throw new AlphaVantageException(errorNode.Value.Value<string>());
+            }
+
+            var informationNode = node?.Properties()?.FirstOrDefault(x => x.Name == "Information");
+            if (informationNode != null)
+            {
+                throw new AlphaVantageException(informationNode.Value.Value<string>());
+            }
         }
 
         private Metadata ParseMetaData(JToken token)

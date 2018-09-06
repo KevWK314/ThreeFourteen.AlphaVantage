@@ -27,6 +27,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
             { "FX_DAILY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.Daily.json" },
             { "FX_WEEKLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.Weekly.json" },
             { "FX_MONTHLY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.Monthly.json" },
+            { "CURRENCY_EXCHANGE_RATE", "ThreeFourteen.AlphaVantage.Test.ExampleData.Fx.ExchangeRate.json" },
             // Cryptos
             { "DIGITAL_CURRENCY_DAILY", "ThreeFourteen.AlphaVantage.Test.ExampleData.Cryptos.Daily.json" },
             // Technicals

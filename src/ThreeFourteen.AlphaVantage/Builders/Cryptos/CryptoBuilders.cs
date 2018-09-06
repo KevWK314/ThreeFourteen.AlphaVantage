@@ -1,4 +1,5 @@
 ﻿using System;
+using ThreeFourteen.AlphaVantage.Builders.Fx;
 using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Cryptos
@@ -10,6 +11,11 @@ namespace ThreeFourteen.AlphaVantage.Builders.Cryptos
         internal CryptoBuilders(Func<IAlphaVantageService> getService)
         {
             _getService = getService;
+        }
+
+        public ExchangeRateBuilder ExchangeRate(string from, string to)
+        {
+            return new ExchangeRateBuilder(_getService(), from, to);
         }
 
         public CryptoBuilder Daily(string symbol, string market)

@@ -15,6 +15,7 @@
 
         public static class Fx
         {
+            public static readonly Function ExchangeRate = new Function("CURRENCY_EXCHANGE_RATE");
             public static readonly Function IntraDay = new Function("FX_INTRADAY");
             public static readonly Function Daily = new Function("FX_DAILY");
             public static readonly Function Weekly = new Function("FX_WEEKLY");

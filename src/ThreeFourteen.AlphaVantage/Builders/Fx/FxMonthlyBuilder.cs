@@ -8,7 +8,7 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Fx
 {
-    public class FxMonthlyBuilder : BuilderBase, IHaveData<FxEntry>
+    public class FxMonthlyBuilder : BuilderBase, IHaveData<FxEntry[]>
     {
         public FxMonthlyBuilder(IAlphaVantageService service, string from, string to)
             : base(service)
@@ -25,9 +25,9 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
 
         protected override Function Function => Function.Fx.Monthly;
 
-        public Task<Result<FxEntry>> GetAsync()
+        public Task<Result<FxEntry[]>> GetAsync()
         {
-            return GetDataAsync(Parse);
+            return GetSeriesDataAsync(Parse);
         }
 
         private IEnumerable<FxEntry> Parse(JToken token)

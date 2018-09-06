@@ -12,6 +12,11 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
             _getService = getService;
         }
 
+        public ExchangeRateBuilder ExchangeRate(string from, string to)
+        {
+            return new ExchangeRateBuilder(_getService(), from, to);
+        }
+
         public FxIntraDayBuilder IntraDay(string from, string to)
         {
             return new FxIntraDayBuilder(_getService(), from, to);

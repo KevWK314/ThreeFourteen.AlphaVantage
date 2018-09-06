@@ -1,0 +1,11 @@
+﻿{
+  "Realtime Currency Exchange Rate": {
+    "1. From_Currency Code": "BTC",
+    "2. From_Currency Name": "Bitcoin",
+    "3. To_Currency Code": "CNY",
+    "4. To_Currency Name": "Chinese Yuan",
+    "5. Exchange Rate": "43742.96736490",
+    "6. Last Refreshed": "2018-09-06 06:16:38",
+    "7. Time Zone": "UTC"
+  }
+}
