@@ -12,12 +12,15 @@ You can install by using the Visual Studio Nuget Package Manager (search ThreeFo
 ```
 
 ## Using ThreeFourteen.AlphaVantage
-Once you've added a reference to the package, it's very simple to use. Everything is strongly typed so there should be little to no guess work. The only caveat is the building a custom request (which will allow you to set whatever parameters you want but you will have to parse the result yourself).
+Once you've added a reference to the package, it's very simple to use. Everything is strongly typed so there should be little to no guess work. The only caveat is the building of a custom request (which will allow you to set whatever parameters you want but you will have to parse the result yourself).
 
-Here are some examples for Fx, Stock and Technicals.
+Here are some examples.
 
 ```c#
   var alphaVantage = new AlphaVantage(apiKey);
+
+  var exchangeRate = await alphaVantage.Fx.ExchangeRate("EUR", "GBP")
+      .GetAsync();
 
   var fxData = await alphaVantage.Fx.IntraDay("EUR", "USD")
       .SetInterval(Interval.FifteenMinutes)
@@ -26,6 +29,9 @@ Here are some examples for Fx, Stock and Technicals.
 
   var stockData = await alphaVantage.Stocks.Daily("MSFT")
       .SetOutputSize(OutputSize.Compact)
+      .GetAsync();
+
+  var cryptoData = await alphaVantage.Cryptos.Daily("BTC", "GBP")
       .GetAsync();
 
   var technicalData = await alphaVantage.Technicals.SimpleMovingAverage("MSFT")
