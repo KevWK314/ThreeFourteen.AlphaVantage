@@ -18,6 +18,9 @@ namespace ThreeFourteen.AlphaVantage.Runner
         {
             var alphaVantage = new AlphaVantage(apiKey);
 
+            var exchangeRate = await alphaVantage.Fx.ExchangeRate("EUR", "GBP")
+                .GetAsync();
+
             var fxData = await alphaVantage.Fx.IntraDay("EUR", "USD")
                 .SetInterval(Interval.FifteenMinutes)
                 .SetOutputSize(OutputSize.Compact)

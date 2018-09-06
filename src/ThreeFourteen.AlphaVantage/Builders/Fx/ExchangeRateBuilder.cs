@@ -25,7 +25,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
 
         protected override Function Function => Function.Fx.ExchangeRate;
 
-        public async Task<Result<FxExchangeRate>> GetAsync()
+        public async Task<FxExchangeRate> GetAsync()
         {
             var res = await GetRawDataAsync();
             JToken node = JToken.Parse(res);
@@ -47,7 +47,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
             rate.LastRefreshed = Formats.ParseDateTime(dataNode.Value<string>("6. Last Refreshed"));
             rate.TimeZone = dataNode.Value<string>("7. Time Zone");
 
-            return new Result<FxExchangeRate>(new Metadata(new Dictionary<string, string>()), rate);
+            return rate;
         }
     }
 }

@@ -8,7 +8,7 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Cryptos
 {
-    public class CryptoBuilder : BuilderBase, IHaveData<CryptoEntry[]>
+    public class CryptoBuilder : BuilderBase, IHaveData<Result<CryptoEntry>>
     {
         private readonly string _market;
 
@@ -25,7 +25,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Cryptos
 
         protected override Function Function { get; }
 
-        public Task<Result<CryptoEntry[]>> GetAsync()
+        public Task<Result<CryptoEntry>> GetAsync()
         {
             return GetSeriesDataAsync(Parse);
         }

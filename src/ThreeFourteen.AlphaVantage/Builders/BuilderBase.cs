@@ -47,7 +47,7 @@ namespace ThreeFourteen.AlphaVantage.Builders
             return _service.GetRawDataAsync(_fields);
         }
 
-        protected virtual async Task<Result<T[]>> GetSeriesDataAsync<T>(Func<JToken, IEnumerable<T>> parseData)
+        protected virtual async Task<Result<T>> GetSeriesDataAsync<T>(Func<JToken, IEnumerable<T>> parseData)
         {
             var res = await GetRawDataAsync();
             JToken node = JToken.Parse(res);
@@ -68,7 +68,7 @@ namespace ThreeFourteen.AlphaVantage.Builders
             }
             var data = parseData(dataNode).ToArray();
 
-            return new Result<T[]>(metadata, data);
+            return new Result<T>(metadata, data);
         }
 
         protected void ValidateResponse(JObject node)

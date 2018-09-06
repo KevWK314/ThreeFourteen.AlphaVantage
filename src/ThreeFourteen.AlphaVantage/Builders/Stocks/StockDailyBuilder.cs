@@ -8,7 +8,7 @@ using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 {
-    public class StockDailyBuilder : BuilderBase, IHaveData<TimeSeriesEntry[]>, ICanSetOutputSize
+    public class StockDailyBuilder : BuilderBase, IHaveData<Result<TimeSeriesEntry>>, ICanSetOutputSize
     {
         public StockDailyBuilder(IAlphaVantageService service, string symbol)
             : base(service)
@@ -20,7 +20,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
 
         protected override Function Function => Function.Stocks.TimeSeriesDaily;
 
-        public Task<Result<TimeSeriesEntry[]>> GetAsync()
+        public Task<Result<TimeSeriesEntry>> GetAsync()
         {
             return GetSeriesDataAsync(Parse);
         }
