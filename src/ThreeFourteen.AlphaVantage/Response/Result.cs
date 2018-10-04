@@ -11,5 +11,10 @@
         public Metadata Meta { get; }
 
         public T[] Data { get; }
+
+        public override string ToString()
+        {
+            return $"{Meta}";
+        }
     }
 }
