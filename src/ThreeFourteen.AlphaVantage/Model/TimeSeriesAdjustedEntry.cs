@@ -5,5 +5,6 @@
         public double AdjustedClose { get; internal set; }
 
         public double DividendAmount { get; internal set; }
+        public double SplitCoefficient { get; internal set; }
     }
 }

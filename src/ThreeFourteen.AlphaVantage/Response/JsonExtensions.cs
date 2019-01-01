@@ -33,7 +33,8 @@ namespace ThreeFourteen.AlphaVantage.Response
                 Close = token.First.Value<double>("4. close"),
                 AdjustedClose = token.First.Value<double>("5. adjusted close"),
                 Volume = token.First.Value<long>("6. volume"),
-                DividendAmount = token.First.Value<double>("7. dividend amount")
+                DividendAmount = token.First.Value<double>("7. dividend amount"),
+                SplitCoefficient = token.First.Value<double>("8. split coefficient")
             };
 
             return entry;
