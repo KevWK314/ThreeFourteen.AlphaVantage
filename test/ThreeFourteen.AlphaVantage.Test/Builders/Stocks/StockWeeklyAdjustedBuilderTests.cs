@@ -31,6 +31,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders.Stocks
             first.AdjustedClose.ShouldBe(107.6400);
             first.Volume.ShouldBe(85933126);
             first.DividendAmount.ShouldBe(0.4200);
+            first.SplitCoefficient.ShouldBe(0.0);
             var last = timeseries.Data.Last();
             last.Timestamp.ShouldBe(Formats.ParseDateTime("1995-01-13"));
             last.Open.ShouldBe(60.8800);
@@ -40,6 +41,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders.Stocks
             last.AdjustedClose.ShouldBe(2.5775);
             last.Volume.ShouldBe(11750000);
             last.DividendAmount.ShouldBe(0.0000);
+            last.SplitCoefficient.ShouldBe(0.0);
         }
     }
 }

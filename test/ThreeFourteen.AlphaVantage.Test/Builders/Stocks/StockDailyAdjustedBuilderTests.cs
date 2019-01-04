@@ -32,6 +32,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders.Stocks
             first.AdjustedClose.ShouldBe(106.8700);
             first.Volume.ShouldBe(17326964);
             first.DividendAmount.ShouldBe(0.0000);
+            first.SplitCoefficient.ShouldBe(1.0);
             var last = timeseries.Data.Last();
             last.Timestamp.ShouldBe(Formats.ParseDateTime("2018-03-29"));
             last.Open.ShouldBe(90.1800);
@@ -41,6 +42,7 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders.Stocks
             last.AdjustedClose.ShouldBe(90.5240);
             last.Volume.ShouldBe(45867548);
             last.DividendAmount.ShouldBe(0.0000);
+            last.SplitCoefficient.ShouldBe(1.0);
         }
     }
 }
