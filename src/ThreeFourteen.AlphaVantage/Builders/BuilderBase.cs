@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
@@ -12,6 +13,8 @@ namespace ThreeFourteen.AlphaVantage.Builders
     {
         private readonly IAlphaVantageService _service;
         private readonly Dictionary<string, string> _fields = new Dictionary<string, string>();
+
+        public IReadOnlyDictionary<string, string> Fields => new ReadOnlyDictionary<string, string>(_fields);
 
         protected abstract string[] RequiredFields { get; }
 
