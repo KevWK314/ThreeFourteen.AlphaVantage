@@ -8,11 +8,15 @@ namespace ThreeFourteen.AlphaVantage
         public AlphaVantageException(string message, IReadOnlyDictionary<string, string> fields)
             : base(message)
         {
+            Fields = fields;
         }
 
         public AlphaVantageException(string message, IReadOnlyDictionary<string, string> fields, Exception innerException)
             : base(message, innerException)
         {
+            Fields = fields;
         }
+
+        public IReadOnlyDictionary<string, string> Fields { get; }
     }
 }
