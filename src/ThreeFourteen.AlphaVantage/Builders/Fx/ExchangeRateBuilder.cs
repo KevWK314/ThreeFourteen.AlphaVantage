@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using ThreeFourteen.AlphaVantage.Model;
-using ThreeFourteen.AlphaVantage.Response;
 using ThreeFourteen.AlphaVantage.Service;
 
 namespace ThreeFourteen.AlphaVantage.Builders.Fx
@@ -35,17 +32,19 @@ namespace ThreeFourteen.AlphaVantage.Builders.Fx
             var dataNode = node.Root["Realtime Currency Exchange Rate"];
             if (dataNode == null)
             {
-                throw new AlphaVantageException("Result does not seem to be valid");
+                throw new AlphaVantageException("Result does not seem to be valid", Fields);
             }
 
-            var rate = new FxExchangeRate();
-            rate.FromCurrencyCode = dataNode.Value<string>("1. From_Currency Code");
-            rate.FromCurrencyName = dataNode.Value<string>("2. From_Currency Name");
-            rate.ToCurrencyCode = dataNode.Value<string>("3. To_Currency Code");
-            rate.ToCurrencyName = dataNode.Value<string>("4. To_Currency Name");
-            rate.ExchangeRate = dataNode.Value<double>("5. Exchange Rate");
-            rate.LastRefreshed = Formats.ParseDateTime(dataNode.Value<string>("6. Last Refreshed"));
-            rate.TimeZone = dataNode.Value<string>("7. Time Zone");
+            var rate = new FxExchangeRate
+            {
+                FromCurrencyCode = dataNode.Value<string>("1. From_Currency Code"),
+                FromCurrencyName = dataNode.Value<string>("2. From_Currency Name"),
+                ToCurrencyCode = dataNode.Value<string>("3. To_Currency Code"),
+                ToCurrencyName = dataNode.Value<string>("4. To_Currency Name"),
+                ExchangeRate = dataNode.Value<double>("5. Exchange Rate"),
+                LastRefreshed = Formats.ParseDateTime(dataNode.Value<string>("6. Last Refreshed")),
+                TimeZone = dataNode.Value<string>("7. Time Zone")
+            };
 
             return rate;
         }

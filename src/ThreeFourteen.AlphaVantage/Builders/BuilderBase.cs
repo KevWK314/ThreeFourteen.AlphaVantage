@@ -60,14 +60,14 @@ namespace ThreeFourteen.AlphaVantage.Builders
             var metadataNode = node.Root["Meta Data"];
             if (metadataNode == null)
             {
-                throw new AlphaVantageException("Result does not seem to be valid");
+                throw new AlphaVantageException("Result does not seem to be valid", Fields);
             }
             var metadata = ParseMetaData(metadataNode);
 
             var dataNode = node.Root.Skip(1).FirstOrDefault();
             if (dataNode == null)
             {
-                throw new AlphaVantageException("Result does not seem to be valid (missing Data)");
+                throw new AlphaVantageException("Result does not seem to be valid (missing Data)", Fields);
             }
             var data = parseData(dataNode).ToArray();
 
@@ -78,19 +78,19 @@ namespace ThreeFourteen.AlphaVantage.Builders
         {
             if (node == null)
             {
-                throw new AlphaVantageException("Invalid response");
+                throw new AlphaVantageException("Invalid response", Fields);
             }
 
-            var errorNode = node?.Properties()?.FirstOrDefault(x => x.Name == "Error Message");
+            var errorNode = node.Properties()?.FirstOrDefault(x => x.Name == "Error Message");
             if (errorNode != null)
             {
-                throw new AlphaVantageException(errorNode.Value.Value<string>());
+                throw new AlphaVantageException(errorNode.Value.Value<string>(), Fields);
             }
 
-            var informationNode = node?.Properties()?.FirstOrDefault(x => x.Name == "Information");
+            var informationNode = node.Properties()?.FirstOrDefault(x => x.Name == "Information");
             if (informationNode != null)
             {
-                throw new AlphaVantageException(informationNode.Value.Value<string>());
+                throw new AlphaVantageException(informationNode.Value.Value<string>(), Fields);
             }
         }
 
