@@ -1,5 +1,4 @@
 ﻿using Shouldly;
-using System.Linq;
 using Xunit;
 
 namespace ThreeFourteen.AlphaVantage.Test.Builders.Fx
