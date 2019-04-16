@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ExampleData\ApiLimit.json" />
     <None Remove="ExampleData\Cryptos\Daily.json" />
     <None Remove="ExampleData\Error.json" />
     <None Remove="ExampleData\Fx\Daily.json" />
@@ -35,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="ExampleData\ApiLimit.json" />
     <EmbeddedResource Include="ExampleData\Cryptos\Daily.json" />
     <EmbeddedResource Include="ExampleData\Error.json" />
     <EmbeddedResource Include="ExampleData\Fx\Daily.json" />
