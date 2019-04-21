@@ -28,7 +28,7 @@ namespace ThreeFourteen.AlphaVantage.Builders.Stocks
         private IEnumerable<TimeSeriesEntry> Parse(JToken token)
         {
             var properties = token as JProperty;
-            return properties.First.Children()
+            return properties?.First.Children()
                 .Select(x => ((JProperty)x).ToTimeSeries())
                 .ToList();
         }
