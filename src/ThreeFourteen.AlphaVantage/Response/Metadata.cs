@@ -12,6 +12,8 @@ namespace ThreeFourteen.AlphaVantage.Response
 
         public override string ToString()
         {
+            if ( Keys == null )
+               return string.Empty;
             return string.Join(";", Keys.Select(x => $"{x}=${this[x]}"));
         }
     }
