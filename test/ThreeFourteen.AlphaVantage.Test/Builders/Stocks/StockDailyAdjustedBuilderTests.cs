@@ -43,6 +43,6 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders.Stocks
             last.Volume.ShouldBe(45867548);
             last.DividendAmount.ShouldBe(0.0000);
             last.SplitCoefficient.ShouldBe(1.0);
-        }
+        }        
     }
 }

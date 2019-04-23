@@ -30,5 +30,16 @@ namespace ThreeFourteen.AlphaVantage.Test.Builders
             var exception = await get.ShouldThrowAsync<AlphaVantageException>();
             exception.Message.ShouldBe("Thank you for using Alpha Vantage! Please visit https://www.alphavantage.co/premium/ if you would like to have a higher API call volume.");
         }
+
+        [Fact]
+        public async void Get_WhenApiLimitMessage_ShouldThrowValidException()
+        {
+            ServiceMock.ForceResponse("APILIMIT");
+
+            Func<Task<Result<TimeSeriesEntry>>> get = () => AlphaVantage.Stocks.Daily("MSFT").GetAsync();
+
+            var exception = await get.ShouldThrowAsync<AlphaVantageApiLimitException>();
+            exception.Message.ShouldBe("Thank you for using Alpha Vantage! Our standard API call frequency is 5 calls per minute and 500 calls per day. Please visit https://www.alphavantage.co/premium/ if you would like to target a higher API call frequency.");
+        }
     }
 }

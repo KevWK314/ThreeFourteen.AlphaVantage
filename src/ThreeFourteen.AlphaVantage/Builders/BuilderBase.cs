@@ -92,6 +92,12 @@ namespace ThreeFourteen.AlphaVantage.Builders
             {
                 throw new AlphaVantageException(informationNode.Value.Value<string>(), Fields);
             }
+
+            var noteNode = node.Properties()?.FirstOrDefault(x => x.Name == "Note");
+            if(noteNode != null)
+            {
+                throw new AlphaVantageApiLimitException(noteNode.Value.Value<string>(), Fields);
+            }
         }
 
         private Metadata ParseMetaData(JToken token)

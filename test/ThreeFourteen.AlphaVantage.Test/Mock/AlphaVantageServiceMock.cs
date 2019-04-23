@@ -36,7 +36,8 @@ namespace ThreeFourteen.AlphaVantage.Test.Mock
             
             // Other
             { "ERROR", "ThreeFourteen.AlphaVantage.Test.ExampleData.Error.json" },
-            { "PREMIUM", "ThreeFourteen.AlphaVantage.Test.ExampleData.PremiumMessage.json" }
+            { "PREMIUM", "ThreeFourteen.AlphaVantage.Test.ExampleData.PremiumMessage.json" },
+            { "APILIMIT", "ThreeFourteen.AlphaVantage.Test.ExampleData.ApiLimit.json" }
         };
 
         public Task<string> GetRawDataAsync(IDictionary<string, string> parameters)
